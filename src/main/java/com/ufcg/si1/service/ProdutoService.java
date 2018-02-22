@@ -1,13 +1,13 @@
 package com.ufcg.si1.service;
 
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
 import com.ufcg.si1.model.Produto;
 
 public interface ProdutoService {
 
-	List<Produto> findAllProdutos();
+	Set<Produto> findAllProdutos();
 
 	void saveProduto(Produto produto);
 

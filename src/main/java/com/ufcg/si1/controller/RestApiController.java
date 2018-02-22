@@ -1,9 +1,7 @@
 package com.ufcg.si1.controller;
 
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import com.ufcg.si1.model.DTO.LoteDTO;
 import com.ufcg.si1.model.Lote;
@@ -39,13 +37,13 @@ public class RestApiController {
 
 	@RequestMapping(value = "/produto/", method = RequestMethod.GET)
 	public ResponseEntity<List<Produto>> listAllUsers() {
-		List<Produto> produtos = produtoService.findAllProdutos();
+		Set<Produto> produtos = produtoService.findAllProdutos();
 
 		if (produtos.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NOT_FOUND
 		}
-		return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
+		return new ResponseEntity<List<Produto>>(HttpStatus.OK);
 	}
 
 	// -------------------Criar um
@@ -54,7 +52,7 @@ public class RestApiController {
 	@RequestMapping(value = "/produto/", method = RequestMethod.POST)
 	public ResponseEntity<?> criarProduto(@RequestBody Produto produto, UriComponentsBuilder ucBuilder) {
 
-		boolean produtoExiste = false;
+		/*boolean produtoExiste = false;
 
 		for (Produto p : produtoService.findAllProdutos()) {
 			if (p.getCodigoBarra().equals(produto.getCodigoBarra())) {
@@ -79,7 +77,8 @@ public class RestApiController {
 		// HttpHeaders headers = new HttpHeaders();
 		// headers.setLocation(ucBuilder.path("/api/produto/{id}").buildAndExpand(produto.getId()).toUri());
 
-		return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
+		return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);*/
+		return null;
 	}
 
 	@RequestMapping(value = "/produto/{id}", method = RequestMethod.GET)
@@ -159,7 +158,7 @@ public class RestApiController {
 	public ResponseEntity<?> criarLote(@PathVariable("id") long produtoId, @RequestBody LoteDTO loteDTO) {
 		Produto product = produtoService.findById(produtoId);
 
-		if (product == null) {
+		/*if (product == null) {
 			return new ResponseEntity(
 					new CustomErrorType("Unable to create lote. Produto with id " + produtoId + " not found."),
 					HttpStatus.NOT_FOUND);
@@ -179,7 +178,8 @@ public class RestApiController {
 			e.printStackTrace();
 		}
 
-		return new ResponseEntity<>(lote, HttpStatus.CREATED);
+		return new ResponseEntity<>(lote, HttpStatus.CREATED);*/
+		return null;
 	}
 
 	@RequestMapping(value = "/lote/", method = RequestMethod.GET)
