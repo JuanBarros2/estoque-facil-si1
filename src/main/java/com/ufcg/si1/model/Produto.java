@@ -2,8 +2,15 @@ package com.ufcg.si1.model;
 
 import java.math.BigDecimal;
 
-import exceptions.ObjetoInvalidoException;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+//import exceptions.ObjetoInvalidoException;
+
+@Entity
 public class Produto {
 
 	private long id;
@@ -20,8 +27,8 @@ public class Produto {
 
 	public int situacao; // usa variaveis estaticas abaixo
 	/* situacoes do produto */
-	public static final int DISPONIVEL = 1;
-	public static final int INDISPONIVEL = 2;
+	/*public static final int DISPONIVEL = 1;
+	public static final int INDISPONIVEL = 2; Números mágicos*/
 
 	public Produto() {
 		this.id = 0;
@@ -36,7 +43,7 @@ public class Produto {
 		this.codigoBarra = codigoBarra;
 		this.fabricante = fabricante;
 		this.categoria = nomeCategoria;
-		this.situacao = Produto.INDISPONIVEL;
+		//this.situacao = Produto.INDISPONIVEL;
 	}
 
 	public String getNome() {
@@ -55,6 +62,8 @@ public class Produto {
 		this.preco = preco;
 	}
 
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "pk_produto")
 	public long getId() {
 		return id;
 	}
@@ -62,7 +71,8 @@ public class Produto {
 	public void mudaId(long codigo) {
 		this.id = codigo;
 	}
-
+	
+	@Column(name = "nm_fabricante")
 	public String getFabricante() {
 		return fabricante;
 	}
@@ -71,6 +81,7 @@ public class Produto {
 		this.fabricante = fabricante;
 	}
 
+	@Column(name = "nm_codigoBarra")
 	public String getCodigoBarra() {
 		return codigoBarra;
 	}
@@ -79,6 +90,7 @@ public class Produto {
 		this.codigoBarra = codigoBarra;
 	}
 
+	@Column(name = "nm_categoria")
 	public String getCategoria() {
 		return this.categoria;
 	}
@@ -87,7 +99,7 @@ public class Produto {
 		this.categoria = categoria;
 	}
 		
-	public void mudaSituacao(int situacao) throws ObjetoInvalidoException {
+	/*public void mudaSituacao(int situacao) throws ObjetoInvalidoException {
 		switch (situacao) {
 		case 1:
 			this.situacao = Produto.DISPONIVEL;
@@ -103,7 +115,9 @@ public class Produto {
 
 	public int getSituacao() throws ObjetoInvalidoException {
 		return this.situacao;
-	}
+	} 
+	
+	BAD SMELL*/
 
 	@Override
 	public int hashCode() {
