@@ -1,4 +1,5 @@
 *.iml
-.idea/*
-node_modules/*
-bower_components/*
+.idea/
+EstoqueFacil-Si1.iml
+bower_components/
+target/

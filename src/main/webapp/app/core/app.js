@@ -1,1 +1,1 @@
-const app = angular.module("efApp", ["ngRoute", "ngMessages","ngAnimate", "toastr", "ui.bootstrap"]);
+const app = angular.module("efApp", ["ui.router", "ngMessages","ngAnimate", "toastr", "ui.bootstrap"]);
