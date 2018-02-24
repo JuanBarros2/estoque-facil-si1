@@ -1,9 +1,13 @@
 package com.ufcg.si1.service;
 
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ufcg.si1.model.Produto;
@@ -16,8 +20,12 @@ public class ProdutoServiceImpl implements ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
+
 	public Set<Produto> findAllProdutos() {
-		return (Set<Produto>) produtoRepository.findAll();
+		Iterable<Produto> it = produtoRepository.findAll();
+		Set<Produto> produtos = new HashSet<>();
+		it.forEach(produtos::add);
+		return produtos;
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class ProdutoController {
 	
 	@GetMapping(value = "/listarTodos")
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public Set<Produto> findAllProdutos(){
+	public Iterable<Produto> findAllProdutos(){
 		return produtoService.findAllProdutos();
 	}
 
