@@ -27,7 +27,7 @@ public class Papel implements GrantedAuthority {
     }
 
     public enum Modulo {
-        DASHBOARD("ROLE_ADM"), USUARIO("ROLE_CLI");
+        ADM("ROLE_ADM"), CLI("ROLE_CLI");
         private String modulo;
 
         private Modulo(String modulo) {
