@@ -22,8 +22,6 @@ import com.ufcg.si1.service.ProdutoService;
 import com.ufcg.si1.service.ProdutoServiceImpl;
 import com.ufcg.si1.util.CustomErrorType;
 
-import exceptions.ObjetoInvalidoException;
-
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
@@ -115,7 +113,7 @@ public class RestApiController {
 					HttpStatus.NOT_FOUND);
 		}
 
-		currentProduto.mudaNome(produto.getNome());
+		currentProduto.setNome(produto.getNome());
 		currentProduto.setPreco(produto.getPreco());
 		currentProduto.setCodigoBarra(produto.getCodigoBarra());
 		currentProduto.mudaFabricante(produto.getFabricante());

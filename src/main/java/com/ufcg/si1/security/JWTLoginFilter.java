@@ -1,8 +1,8 @@
 package com.ufcg.si1.security;
 
-import br.edu.thejukebox.exception.UserInvalidException;
-import br.edu.thejukebox.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ufcg.si1.model.Usuario;
+import exceptions.ObjetoInvalidoException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,8 +28,8 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException {
         try {
-            User creds = new ObjectMapper()
-                    .readValue(req.getInputStream(), User.class);
+            Usuario creds = new ObjectMapper()
+                    .readValue(req.getInputStream(), Usuario.class);
 
             return getAuthenticationManager().authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -39,8 +39,6 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
             );
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } catch (AuthenticationException e){
-            throw new UserInvalidException();
         }
     }
 

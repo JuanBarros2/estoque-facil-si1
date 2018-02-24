@@ -1,6 +1,6 @@
 package com.ufcg.si1.security;
 
-import br.edu.thejukebox.service.AuthService;
+import com.ufcg.si1.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,8 @@ import java.util.Arrays;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private AuthService userDetailsService;
+    private AuthService authService;
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -34,18 +35,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
 
-                // filtra requisições de login
                 .addFilterBefore(new JWTLoginFilter(SecurityConstants.SIGN_UP_URL, authenticationManager()),
                         UsernamePasswordAuthenticationFilter.class)
 
-                // filtra outras requisições para verificar a presença do JWT no header
                 .addFilterBefore(new JWTAuthenticationFilter(),
                         UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(authService).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Bean

@@ -50,7 +50,7 @@ public class Produto {
 		return nome;
 	}
 
-	public void mudaNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
@@ -66,6 +66,22 @@ public class Produto {
     @Column(name = "pk_produto")
 	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setFabricante(String fabricante) {
+		this.fabricante = fabricante;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setSituacao(int situacao) {
+		this.situacao = situacao;
 	}
 
 	public void mudaId(long codigo) {
