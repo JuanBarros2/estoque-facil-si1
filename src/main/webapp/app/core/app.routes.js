@@ -1,16 +1,18 @@
-app.config(function ($routeProvider) {
-    $routeProvider.when("/",{
-      templateUrl: "app/core/main/searchProductView.html",
-      controller: "SearchProductCtrl"
-    }).when("/products",{
-        templateUrl: "app/core/main/searchProductView.html",
-        controller: "SearchProductCtrl"
-    })
-    //     .when("/products/create-product",{
-    //     templateUrl: "view/createProductView.html",
-    //     controller: "CreateProductCtrl"
-    // })
-        .otherwise({
-        redirectTo: '/'
-    });
+app.config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise("nao-encontrado");
+
+    $stateProvider
+        .state("home", {
+            url: "/",
+            templateUrl: "app/core/main/produto/pesquisa/search-product.html",
+            controller: "PesquisaProdutoCtrl"
+        })
+
+        .state("home.login", {
+            url: "login",
+            templateUrl: "app/components/user/login/login.html",
+            controller: 'LoginCtrl',
+            controllerAs: "vm"
+        })
 });
