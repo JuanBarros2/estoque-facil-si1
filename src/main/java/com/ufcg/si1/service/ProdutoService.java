@@ -19,7 +19,7 @@ public interface ProdutoService {
 
 	int size();
 
-	Iterator<Produto> getIterator();
+	Iterator getIterator();
 
 	boolean doesProdutoExist(Produto produto);
 }

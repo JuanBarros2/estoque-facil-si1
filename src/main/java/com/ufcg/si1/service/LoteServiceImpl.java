@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import com.ufcg.si1.model.Lote;
 import org.springframework.stereotype.Service;
 
-@Service("loteService")
+@Service("produtoLoteService")
 public class LoteServiceImpl implements LoteService {
 
 	private static final AtomicLong counter = new AtomicLong();

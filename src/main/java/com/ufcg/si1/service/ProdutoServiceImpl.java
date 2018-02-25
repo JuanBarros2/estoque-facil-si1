@@ -30,44 +30,38 @@ public class ProdutoServiceImpl implements ProdutoService {
 
 	@Override
 	public void saveProduto(Produto produto) {
-		// TODO Auto-generated method stub
-		
+		produtoRepository.save(produto);
 	}
 
 	@Override
 	public Produto findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return produtoRepository.findOne(id);
 	}
 
 	@Override
 	public void updateProduto(Produto user) {
-		// TODO Auto-generated method stub
-		
+		produtoRepository.save(user);
 	}
 
 	@Override
 	public void deleteProdutoById(long id) {
-		// TODO Auto-generated method stub
-		
+		produtoRepository.delete(id);
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return produtoRepository.countAllById();
 	}
 
 	@Override
 	public Iterator<Produto> getIterator() {
-		// TODO Auto-generated method stub
-		return null;
+		Iterable<Produto> iterable = produtoRepository.findAll();
+		return iterable.iterator();
 	}
 
 	@Override
 	public boolean doesProdutoExist(Produto produto) {
-		// TODO Auto-generated method stub
-		return false;
+		return produtoRepository.exists(produto.getId());
 	}
 
 }
