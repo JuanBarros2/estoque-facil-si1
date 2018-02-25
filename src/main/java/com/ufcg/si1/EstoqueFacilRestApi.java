@@ -2,7 +2,10 @@ package com.ufcg.si1;
 
 import com.ufcg.si1.model.Papel;
 import com.ufcg.si1.model.Produto;
+import com.ufcg.si1.model.ProdutoLote;
 import com.ufcg.si1.model.Usuario;
+import com.ufcg.si1.repository.CategoriaRepository;
+import com.ufcg.si1.repository.ProdutoLoteRepository;
 import com.ufcg.si1.repository.ProdutoRepository;
 import com.ufcg.si1.repository.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -16,8 +19,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static com.ufcg.si1.model.Papel.Modulo.ADM;
@@ -41,7 +42,11 @@ public class EstoqueFacilRestApi {
 	}
 
 	@Bean
-	CommandLineRunner init(UsuarioRepository usuarioRepository, BCryptPasswordEncoder crypt, ProdutoRepository produtoRepository) {
+	CommandLineRunner init(UsuarioRepository usuarioRepository,
+						   BCryptPasswordEncoder crypt,
+						   CategoriaRepository categoriaRepository,
+						   ProdutoRepository produtoRepository,
+						   ProdutoLoteRepository produtoLoteRepository) {
 		return (evt) -> {
 							Usuario usuario = new Usuario();
 							usuario.setEmail("admin");
@@ -51,13 +56,16 @@ public class EstoqueFacilRestApi {
 							usuario.setPapeis(Arrays.asList(papel));
 							usuarioRepository.save(usuario);
 
-							AtomicLong counter = new AtomicLong();
-							produtoRepository.save(new Produto(counter.incrementAndGet(), "Leite Integral", "87654321-B", "Parmalat", "Mercearia"));
-							produtoRepository.save(new Produto(counter.incrementAndGet(), "Arroz Integral", "87654322-B", "Tio Joao", "Perecíveis"));
-							produtoRepository.save(new Produto(counter.incrementAndGet(), "Sabao em Po", "87654323-B", "OMO", "Limpeza"));
-							produtoRepository.save(new Produto(counter.incrementAndGet(), "Agua Sanitaria", "87654324-C", "Dragao", "limpesa"));
-							produtoRepository.save(new Produto(counter.incrementAndGet(), "Creme Dental", "87654325-C", "Colgate", "HIGIENE"));
+							ArrayList<ProdutoLote> produtoLotes = new ArrayList<>();
+							produtoLotes.add(new ProdutoLote(new Produto("Leite Integral", "87654321-B", "Parmalat", "Mercearia")));
+							produtoLotes.add(new ProdutoLote(new Produto("Arroz Integral", "87654322-B", "Tio Joao", "Perecíveis")));
+							produtoLotes.add(new ProdutoLote(new Produto("Sabao em Po", "87654323-B", "OMO", "Limpeza")));
+							produtoLotes.add(new ProdutoLote(new Produto( "Agua Sanitaria", "87654324-C", "Dragao", "limpesa")));
+							produtoLotes.add(new ProdutoLote(new Produto("Creme Dental", "87654325-C", "Colgate", "HIGIENE")));
 
+							for(ProdutoLote produto: produtoLotes){
+								produtoLoteRepository.save(produto);
+							}
 		};
 	}
 

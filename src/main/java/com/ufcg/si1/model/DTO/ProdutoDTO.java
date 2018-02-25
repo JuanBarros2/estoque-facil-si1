@@ -5,11 +5,12 @@ import com.ufcg.si1.model.Lote;
 import com.ufcg.si1.model.Produto;
 import com.ufcg.si1.model.ProdutoLote;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ProdutoDTO {
+public class ProdutoDTO implements Serializable {
 
     private String nome;
 
@@ -29,7 +30,7 @@ public class ProdutoDTO {
         this.fabricante = produto.getFabricante();
         Categoria categoria = produto.getCategoria();
         this.categoria = categoria.getNome();
-
+        this.quantidade = 0;
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         for(Lote lote : produtoLote.getLotes()){
             try {
@@ -41,5 +42,46 @@ public class ProdutoDTO {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 }

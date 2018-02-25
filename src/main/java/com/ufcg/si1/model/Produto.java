@@ -1,38 +1,23 @@
 package com.ufcg.si1.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Produto {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "pk_produto")
-	private long id;
-
+	@Id @GeneratedValue
+	private Long id;
 	private String nome;
-
 	private Double preco;
-
-	@Column(name = "nm_codigoBarra")
 	private String codigoBarra;
-
-	@Column(name = "nm_fabricante")
 	private String fabricante;
-
-	@Column(name = "nm_categoria")
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Categoria categoria;
 
 	public Produto() {
-		this.id = 0;
-		this.preco = 0d;
 	}
 
-	public Produto(long id, String nome, String codigoBarra, String fabricante,
+	public Produto(String nome, String codigoBarra, String fabricante,
 			String nomeCategoria) {
-		this.id = id;
 		this.nome = nome;
 		this.preco = 0d;
 		this.codigoBarra = codigoBarra;
@@ -56,11 +41,11 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

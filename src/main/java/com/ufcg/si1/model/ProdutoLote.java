@@ -1,16 +1,25 @@
 package com.ufcg.si1.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class ProdutoLote {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private long id;
+    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private Produto produto;
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Lote> lotes;
+
+    public ProdutoLote(Produto produto){
+        this.produto = produto;
+        this.lotes = new ArrayList<>();
+    }
+    public ProdutoLote(){}
 
     @Override
     public boolean equals(Object o) {
