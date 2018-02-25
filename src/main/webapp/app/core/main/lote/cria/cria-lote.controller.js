@@ -1,4 +1,4 @@
-app.controller("CriaLoteCtr", function ($scope, $uibModalInstance, $http, toastr, produto) {
+app.controller("CriaLoteCtr", function ($scope, ProdutoLoteService, $uibModalInstance, $http, toastr, produto) {
 
     $scope.produto = produto;
     $scope.dateformat = 'dd/MM/yyyy';
@@ -23,17 +23,14 @@ app.controller("CriaLoteCtr", function ($scope, $uibModalInstance, $http, toastr
             numeroDeItens: numeroDeItens
         }
 
-        $http.post("http://localhost:8080/api/produto/" + produto.id + "/lote", JSON.stringify(lote))
-            .then(function success(response) {
-                console.log(response)
-                if (response.status === 201) {
-                    console.log("Lote criado com sucesso!");
-                    toastr.success("Lote criado com sucesso!");
-                    $uibModalInstance.close({
-                        status: 201
-                    });
-                }
-            }, function error(error) {
+        ProdutoLoteService.cria(produto.id, JSON.stringify(lote))
+            .then(response => {
+                console.log("Lote criado com sucesso!");
+                toastr.success("Lote criado com sucesso!");
+                $uibModalInstance.close({
+                    status: 201
+                });
+            }, error => {
                 console.log(error);
                 toastr.error("Problemas ao tentar adicionar produto.");
             });

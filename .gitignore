@@ -3,3 +3,4 @@
 EstoqueFacil-Si1.iml
 bower_components/
 target/
+*.vscode
