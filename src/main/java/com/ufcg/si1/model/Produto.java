@@ -1,49 +1,43 @@
 package com.ufcg.si1.model;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//import exceptions.ObjetoInvalidoException;
-
 @Entity
 public class Produto {
-
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "pk_produto")
 	private long id;
 
 	private String nome;
 
-	private BigDecimal preco;
+	private Double preco;
 
+	@Column(name = "nm_codigoBarra")
 	private String codigoBarra;
 
+	@Column(name = "nm_fabricante")
 	private String fabricante;
 
-	private String categoria;
-
-	public int situacao; // usa variaveis estaticas abaixo
-	/* situacoes do produto */
-	/*public static final int DISPONIVEL = 1;
-	public static final int INDISPONIVEL = 2; Números mágicos*/
+	@Column(name = "nm_categoria")
+	private Categoria categoria;
 
 	public Produto() {
 		this.id = 0;
-		this.preco = new BigDecimal(0);
+		this.preco = 0d;
 	}
 
 	public Produto(long id, String nome, String codigoBarra, String fabricante,
 			String nomeCategoria) {
 		this.id = id;
 		this.nome = nome;
-		this.preco = new BigDecimal(0);
+		this.preco = 0d;
 		this.codigoBarra = codigoBarra;
 		this.fabricante = fabricante;
-		this.categoria = nomeCategoria;
-		//this.situacao = Produto.INDISPONIVEL;
+		this.categoria = new Categoria(nomeCategoria);
 	}
 
 	public String getNome() {
@@ -54,16 +48,14 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public BigDecimal getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigDecimal preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "pk_produto")
 	public long getId() {
 		return id;
 	}
@@ -72,32 +64,22 @@ public class Produto {
 		this.id = id;
 	}
 
-	public void setFabricante(String fabricante) {
-		this.fabricante = fabricante;
-	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-
-	public void setSituacao(int situacao) {
-		this.situacao = situacao;
-	}
-
-	public void mudaId(long codigo) {
-		this.id = codigo;
-	}
-	
-	@Column(name = "nm_fabricante")
 	public String getFabricante() {
 		return fabricante;
 	}
 
-	public void mudaFabricante(String fabricante) {
+	public void setFabricante(String fabricante) {
 		this.fabricante = fabricante;
 	}
 
-	@Column(name = "nm_codigoBarra")
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Categoria getCategoria() {
+		return this.categoria;
+	}
+
 	public String getCodigoBarra() {
 		return codigoBarra;
 	}
@@ -105,35 +87,6 @@ public class Produto {
 	public void setCodigoBarra(String codigoBarra) {
 		this.codigoBarra = codigoBarra;
 	}
-
-	@Column(name = "nm_categoria")
-	public String getCategoria() {
-		return this.categoria;
-	}
-
-	public void mudaCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-		
-	/*public void mudaSituacao(int situacao) throws ObjetoInvalidoException {
-		switch (situacao) {
-		case 1:
-			this.situacao = Produto.DISPONIVEL;
-			break;
-		case 2:
-			this.situacao = Produto.INDISPONIVEL;
-			break;
-
-		default:
-			throw new ObjetoInvalidoException("Situacao Invalida");
-		}
-	}
-
-	public int getSituacao() throws ObjetoInvalidoException {
-		return this.situacao;
-	} 
-	
-	BAD SMELL*/
 
 	@Override
 	public int hashCode() {
