@@ -38,6 +38,11 @@ public class Papel implements GrantedAuthority {
         public String toString() {
             return this.modulo;
         }
+
+        public static class Constants {
+            public static final String ADM = "ROLE_ADM";
+            public static final String CLI = "ROLE_CLI";
+        }
     }
 
     public Integer getId() {

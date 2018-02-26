@@ -1,6 +1,7 @@
 package com.ufcg.si1.service;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import com.ufcg.si1.model.DTO.ProdutoDTO;
@@ -9,7 +10,7 @@ import com.ufcg.si1.model.ProdutoLote;
 
 public interface ProdutoLoteService {
 
-	Set<ProdutoLote> findAllProdutos();
+	List<ProdutoLote> findAllProdutos();
 
 	void saveProduto(ProdutoLote produto);
 

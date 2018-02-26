@@ -31,13 +31,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers(SecurityConstants.OPEN_URL, SecurityConstants.SIGN_UP_URL, SecurityConstants.SIGN_IN_URL).permitAll()
+                .antMatchers(SecurityConstants.SIGN_UP_URL, SecurityConstants.SIGN_IN_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
-
                 .addFilterBefore(new JWTLoginFilter(SecurityConstants.SIGN_UP_URL, authenticationManager()),
                         UsernamePasswordAuthenticationFilter.class)
-
                 .addFilterBefore(new JWTAuthenticationFilter(),
                         UsernamePasswordAuthenticationFilter.class);
     }

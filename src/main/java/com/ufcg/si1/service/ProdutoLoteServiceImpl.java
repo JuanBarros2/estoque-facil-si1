@@ -13,9 +13,9 @@ public class ProdutoLoteServiceImpl implements ProdutoLoteService {
 	private ProdutoLoteRepository produtoLoteRepository;
 
 	@Override
-	public Set<ProdutoLote> findAllProdutos() {
+	public List<ProdutoLote> findAllProdutos() {
 		Iterable<ProdutoLote> it = produtoLoteRepository.findAll();
-		Set<ProdutoLote> produtos = new HashSet<>();
+		List<ProdutoLote> produtos = new ArrayList<>();
 		it.forEach(produtos::add);
 		return produtos;
 	}
