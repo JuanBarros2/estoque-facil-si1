@@ -21,7 +21,7 @@ public class Usuario implements UserDetails {
     @NotEmpty
     private String senha;
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Papel> papeis;
 
     @Override
@@ -82,6 +82,7 @@ public class Usuario implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public List<Papel> getPapeis() {
         return papeis;
     }

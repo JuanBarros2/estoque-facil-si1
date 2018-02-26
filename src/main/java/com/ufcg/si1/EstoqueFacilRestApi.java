@@ -54,7 +54,7 @@ public class EstoqueFacilRestApi {
 							Papel papel = new Papel();
 							papel.setNome(ADM);
 							usuario.setPapeis(Arrays.asList(papel));
-							usuarioRepository.save(usuario);
+							Usuario usuario1 = usuarioRepository.save(usuario);
 
 							ArrayList<ProdutoLote> produtoLotes = new ArrayList<>();
 							produtoLotes.add(new ProdutoLote(new Produto("Leite Integral", "87654321-B", "Parmalat", "Mercearia")));

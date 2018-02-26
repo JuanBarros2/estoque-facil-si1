@@ -7,6 +7,5 @@ public interface SecurityConstants {
     String HEADER_STRING = "Authorization";
     String SIGN_UP_URL = "/auth/login";
     String SIGN_IN_URL = "/account/register";
-    String PRODUTO_URL = "/produto";
 
 }

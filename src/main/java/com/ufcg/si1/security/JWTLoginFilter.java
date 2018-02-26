@@ -1,6 +1,7 @@
 package com.ufcg.si1.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ufcg.si1.model.Papel;
 import com.ufcg.si1.model.Usuario;
 import exceptions.ObjetoInvalidoException;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -35,7 +37,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
                     new UsernamePasswordAuthenticationToken(
                             creds.getEmail(),
                             creds.getPassword(),
-                            new ArrayList<>())
+                            creds.getAuthorities())
             );
         } catch (IOException e) {
             throw new RuntimeException(e);

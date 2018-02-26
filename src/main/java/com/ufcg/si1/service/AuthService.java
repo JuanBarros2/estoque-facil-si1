@@ -27,6 +27,6 @@ public class AuthService implements UserDetailsService {
         if (applicationUser == null) {
             throw new UsernameNotFoundException(email);
         }
-        return new User(applicationUser.getEmail(), applicationUser.getPassword(), emptyList());
+        return new User(applicationUser.getEmail(), applicationUser.getPassword(), applicationUser.getAuthorities());
     }
 }
