@@ -17,7 +17,7 @@ app.controller("PesquisaProdutoCtrl", ["$scope", "$uibModal", "$http", "toastr",
             const modalInstance = $uibModal.open({
                 ariaLabelledBy: 'Adicionar Produto',
                 ariaDescribedBy: 'Formulario para adição de um novo produto',
-                templateUrl: 'app/core/main/produto/cria/create-product.html',
+                templateUrl: 'app/core/main/produto/cria/cria-produto.html',
                 controller: 'CriaProdutoCtrl',
                 controllerAs: 'cpCtrl'
             });
@@ -33,7 +33,7 @@ app.controller("PesquisaProdutoCtrl", ["$scope", "$uibModal", "$http", "toastr",
             const modalInstance = $uibModal.open({
                 ariaLabelledBy: 'Atribuir preço á Produto',
                 ariaDescribedBy: 'Formulario para Atribuir preço á Produto',
-                templateUrl: 'app/core/main/updateProductPriceView.html',
+                templateUrl: 'app/core/main/atualiza-produto.html',
                 controller: 'UpdateProductPriceCtrl',
                 resolve: {
                     produto: function () {
