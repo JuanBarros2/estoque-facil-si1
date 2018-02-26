@@ -15,7 +15,13 @@ app.factory("ProdutoService", ["$http", "AppConfig", function ($http, AppConfig)
     }
 
     function _cria(produto) {
-        $http.post(`${baseServiceUrl}/`, produto);
+        return $http.post(`${baseServiceUrl}/`, produto)
+            .then(response => {
+                console.log(response)
+                if (response.status === 201) {
+                    return response.data;
+                }
+            });
     }
 
     return {

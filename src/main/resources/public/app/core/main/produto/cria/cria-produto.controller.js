@@ -28,14 +28,11 @@ app.controller("CriaProdutoCtrl", ["$uibModalInstance", "$http", "toastr", "Prod
             // product.situacao = situacao === 1 ? 1 : 2;
 
             produtoService.cria(JSON.stringify(product))
-                .then(function success(response) {
-                    if (response.status === 201) {
-                        toastr.success("Produto adicionado com sucesso!");
-                        vm.product = {};
-                        console.log(response)
-                        $uibModalInstance.close(201);
-                    }
-                }, function error(error) {
+                .then(response => {
+                    toastr.success("Produto adicionado com sucesso!");
+                    vm.product = {};
+                    $uibModalInstance.close(201);
+                }).catch(error => {
                     console.log(error);
                     toastr.error("Problemas ao tentar adicionar produto.");
                 });
