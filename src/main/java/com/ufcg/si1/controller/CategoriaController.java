@@ -2,8 +2,6 @@ package com.ufcg.si1.controller;
 
 import com.ufcg.si1.model.Categoria;
 import com.ufcg.si1.model.Papel.Modulo.Constants;
-import com.ufcg.si1.repository.CategoriaRepository;
-import com.ufcg.si1.service.CategoriaService;
 import com.ufcg.si1.service.CategoriaServiceImpl;
 import exceptions.ObjetoInexistenteException;
 import org.springframework.beans.factory.annotation.Autowired;

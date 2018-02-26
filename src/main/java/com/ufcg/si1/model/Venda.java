@@ -1,5 +1,6 @@
 package com.ufcg.si1.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ public class Venda {
 	@OneToMany
     private List<ItemVenda> itens;
 
+	private Date dataVenda;
+	
 	public long getId() {
 		return id;
 	}
@@ -30,6 +33,14 @@ public class Venda {
 
 	public void setItens(List<ItemVenda> itens) {
 		this.itens = itens;
+	}	
+
+	public Date getDataVenda() {
+		return dataVenda;
+	}
+
+	public void setDataVenda(Date dataVenda) {
+		this.dataVenda = dataVenda;
 	}
 
 	@Override

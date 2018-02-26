@@ -1,5 +1,6 @@
 package com.ufcg.si1.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,15 @@ public class VendaServiceImpl implements VendaService{
 
 	@Override
 	public List<Venda> findAllVendas() {
-		// TODO Auto-generated method stub
-		return null;
+		Iterable<Venda> it = vendaRepository.findAll();
+		List<Venda> vendas = new ArrayList<>();
+		it.forEach(vendas::add);
+		return vendas;
 	}
 
 	@Override
 	public Venda findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return vendaRepository.findOne((int) id);
 	}
 
 	@Override
