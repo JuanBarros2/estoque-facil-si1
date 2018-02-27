@@ -49,7 +49,7 @@ public class EstoqueFacilRestApi {
 						   ProdutoLoteRepository produtoLoteRepository) {
 		return (evt) -> {
 							Usuario usuario = new Usuario();
-							usuario.setEmail("admin");
+							usuario.setEmail("admin@admin.com");
 							usuario.setSenha(crypt.encode("admin"));
 							Papel papel = new Papel();
 							papel.setNome(ADM);

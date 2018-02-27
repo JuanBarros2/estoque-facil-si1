@@ -1,9 +1,6 @@
 package com.ufcg.si1.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class ItemVenda {
@@ -11,7 +8,7 @@ public class ItemVenda {
 	@Id
     @GeneratedValue
 	private long id;
-	@OneToOne
+	@ManyToOne
 	private Produto produto;
 	private int quantidade;
 	private double preco;

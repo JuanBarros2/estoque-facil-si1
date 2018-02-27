@@ -33,7 +33,7 @@ public class ProdutoController {
 		return produtos;
 	}
 
-	@PostMapping(value = "/adiciona")
+	@PostMapping
 	@Secured({Constants.ADM})
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto createProduto(@RequestBody Produto produto) throws ObjetoJaExistenteException {

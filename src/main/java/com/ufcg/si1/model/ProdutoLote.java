@@ -9,7 +9,7 @@ import java.util.Objects;
 public class ProdutoLote {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private Produto produto;
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
@@ -35,11 +35,11 @@ public class ProdutoLote {
         return Objects.hash(produto);
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

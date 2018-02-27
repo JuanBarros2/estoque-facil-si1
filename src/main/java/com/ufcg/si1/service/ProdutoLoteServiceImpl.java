@@ -1,12 +1,14 @@
 package com.ufcg.si1.service;
 
 import java.util.*;
+
+import com.ufcg.si1.model.Produto;
 import com.ufcg.si1.model.ProdutoLote;
 import com.ufcg.si1.repository.ProdutoLoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("produtoService")
+@Service
 public class ProdutoLoteServiceImpl implements ProdutoLoteService {
 
 	@Autowired
@@ -52,8 +54,10 @@ public class ProdutoLoteServiceImpl implements ProdutoLoteService {
 	}
 
 	@Override
-	public boolean doesProdutoExist(ProdutoLote produto) {
-		return produtoLoteRepository.exists(produto.getId());
+	public boolean doesProdutoExist(ProdutoLote produtoLote) {
+		Produto produto = produtoLote.getProduto();
+		produtoLote = produtoLoteRepository.findFirstByProduto_NomeAndProduto_Fabricante(produto.getNome(), produto.getFabricante());
+		return  produtoLote != null;
 	}
 
 }

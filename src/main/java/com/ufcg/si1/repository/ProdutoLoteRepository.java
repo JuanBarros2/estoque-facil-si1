@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface ProdutoLoteRepository extends CrudRepository<ProdutoLote, Long> {
     ProdutoLote findFirstByProdutoId(long id);
     void deleteAllByProdutoId(long id);
+    ProdutoLote findFirstByProduto_NomeAndProduto_Fabricante(String nome, String fabricante);
 }
