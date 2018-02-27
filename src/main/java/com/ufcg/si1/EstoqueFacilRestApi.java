@@ -54,14 +54,14 @@ public class EstoqueFacilRestApi {
 							Papel papel = new Papel();
 							papel.setNome(ADM);
 							usuario.setPapeis(Arrays.asList(papel));
-							Usuario usuario1 = usuarioRepository.save(usuario);
+							usuarioRepository.save(usuario);
 
 							ArrayList<ProdutoLote> produtoLotes = new ArrayList<>();
-							produtoLotes.add(new ProdutoLote(new Produto("Leite Integral", "87654321-B", "Parmalat", "Mercearia")));
-							produtoLotes.add(new ProdutoLote(new Produto("Arroz Integral", "87654322-B", "Tio Joao", "Perecíveis")));
-							produtoLotes.add(new ProdutoLote(new Produto("Sabao em Po", "87654323-B", "OMO", "Limpeza")));
-							produtoLotes.add(new ProdutoLote(new Produto( "Agua Sanitaria", "87654324-C", "Dragao", "limpesa")));
-							produtoLotes.add(new ProdutoLote(new Produto("Creme Dental", "87654325-C", "Colgate", "HIGIENE")));
+							produtoLotes.add(new ProdutoLote(new Produto("Leite Integral", 2.99, "87654321-B", "Parmalat", "Mercearia")));
+							produtoLotes.add(new ProdutoLote(new Produto("Arroz Integral", 3.80, "87654322-B", "Tio Joao", "Perecíveis")));
+							produtoLotes.add(new ProdutoLote(new Produto("Sabao em Po", 7.99, "87654323-B", "OMO", "Limpeza")));
+							produtoLotes.add(new ProdutoLote(new Produto( "Agua Sanitaria", 3D, "87654324-C", "Dragao", "limpesa")));
+							produtoLotes.add(new ProdutoLote(new Produto("Creme Dental", 2.99, "87654325-C", "Colgate", "HIGIENE")));
 
 							for(ProdutoLote produto: produtoLotes){
 								produtoLoteRepository.save(produto);

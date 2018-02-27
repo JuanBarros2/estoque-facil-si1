@@ -16,10 +16,10 @@ public class Produto {
 	public Produto() {
 	}
 
-	public Produto(String nome, String codigoBarra, String fabricante,
+	public Produto(String nome, Double preco, String codigoBarra, String fabricante,
 			String nomeCategoria) {
 		this.nome = nome;
-		this.preco = 0d;
+		this.preco = preco;
 		this.codigoBarra = codigoBarra;
 		this.fabricante = fabricante;
 		this.categoria = new Categoria(nomeCategoria);

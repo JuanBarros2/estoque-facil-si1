@@ -12,6 +12,8 @@ import java.util.Date;
 
 public class ProdutoDTO implements Serializable {
 
+    private Long id;
+
     private String nome;
 
     private Double preco;
@@ -25,17 +27,18 @@ public class ProdutoDTO implements Serializable {
 
     public ProdutoDTO(ProdutoLote produtoLote) {
         Produto produto = produtoLote.getProduto();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco();
-        this.fabricante = produto.getFabricante();
         Categoria categoria = produto.getCategoria();
+        this.id = produto.getId();
+        this.nome = produto.getNome();
+        this.preco = produto.getPreco() - categoria.applyDiscount(produto.getPreco());
+        this.fabricante = produto.getFabricante();
         this.categoria = categoria.getNome();
         this.quantidade = 0;
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         for(Lote lote : produtoLote.getLotes()){
             try {
                 Date data = formato.parse(lote.getDataDeValidade());
-                if (data.before(new Date())){
+                if (data.after(new Date())){
                     this.quantidade += lote.getNumeroDeItens();
                 }
             } catch (ParseException e) {
@@ -83,5 +86,13 @@ public class ProdutoDTO implements Serializable {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Long getId(){
+        return this.id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
     }
 }

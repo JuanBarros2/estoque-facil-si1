@@ -1,8 +1,7 @@
 package com.ufcg.si1.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -57,5 +56,9 @@ public class Categoria {
     public int hashCode() {
 
         return Objects.hash(nome);
+    }
+
+    public Double applyDiscount(Double preco) {
+        return Math.round((this.desconto / 100) * preco * 100) / 100d;
     }
 }
