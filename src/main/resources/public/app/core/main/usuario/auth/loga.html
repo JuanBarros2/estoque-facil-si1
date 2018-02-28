@@ -1,17 +1,17 @@
-<form name="vm.loginForm">
+<form name="logaCtrl.loginForm">
     <div class="form-group row">
         <input class="form-control" placeholder="Email" type="email" name="email" id="email"
-               ng-model="vm.credenciais.email"
+               ng-model="logaCtrl.credenciais.email"
                required/>
     </div>
     <div class="form-group row">
         <input class="form-control" placeholder="Senha" type="password" name="senha" id="senha"
-               ng-model="vm.credenciais.senha"
+               ng-model="logaCtrl.credenciais.senha"
                required/>
     </div>
 
-    <section ng-messages="vm.loginForm.email.$error"
-             ng-show="vm.loginForm.email.$dirty">
+    <section ng-messages="logaCtrl.loginForm.email.$error"
+             ng-show="logaCtrl.loginForm.email.$dirty">
         <div ng-message="required" class="alert alert-danger validation-message">
             O Email não pode ser vazio
         </div>
@@ -21,16 +21,16 @@
         </div>
     </section>
 
-    <section ng-messages="vm.loginForm.senha.$error"
-             ng-show="vm.loginForm.senha.$dirty">
+    <section ng-messages="logaCtrl.loginForm.senha.$error"
+             ng-show="logaCtrl.loginForm.senha.$dirty">
         <div ng-message="required" class="alert alert-danger validation-message">
             A senha não pode ser vazia
         </div>
     </section>
 
     <section class="row">
-        <button class="btn btn-primary btn-block" ng-disabled="vm.loginForm.$invalid" id="btn.add.artist"
-                ng-click="vm.loga(vm.credenciais)">Login
+        <button class="btn btn-primary btn-block" ng-disabled="logaCtrl.loginForm.$invalid" id="btn.add.artist"
+                ng-click="logaCtrl.loga(logaCtrl.credenciais)">Login
         </button>
     </section>
 

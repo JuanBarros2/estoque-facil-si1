@@ -1,21 +1,23 @@
-app.controller("CriaLoteCtr", function ($scope, ProdutoLoteService, $uibModalInstance, $http, toastr, produto) {
+app.controller("CriaLoteCtrl", function (ProdutoLoteService, $uibModalInstance, $http, toastr, produto) {
 
-    $scope.produto = produto;
-    $scope.dateformat = 'dd/MM/yyyy';
-    $scope.datePicker = {
+    const self = this;
+
+    self.produto = produto;
+    self.dateformat = 'dd/MM/yyyy';
+    self.datePicker = {
         opened : false
     };
 
-    $scope.dataDeValidade = new Date();
-    $scope.numeroDeItens = 0;
+    self.dataDeValidade = new Date();
+    self.numeroDeItens = 0;
 
-    $scope.dateOptions = {
+    self.dateOptions = {
         formatYear: 'yy',
         minDate: new Date(),
         startingDay: 1
     };
 
-    $scope.submit = function (dataDeValidade, numeroDeItens) {
+    self.submit = function (dataDeValidade, numeroDeItens) {
 
         //adicionar
         var lote = {
@@ -36,11 +38,11 @@ app.controller("CriaLoteCtr", function ($scope, ProdutoLoteService, $uibModalIns
             });
     };
 
-    $scope.cancel = function () {
+    self.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.openDatePicker = function () {
-        $scope.datePicker.opened = true;
+    self.openDatePicker = function () {
+        self.datePicker.opened = true;
     }
 });

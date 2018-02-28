@@ -1,11 +1,11 @@
 app.controller("CriaProdutoCtrl", ["$uibModalInstance", "$http", "toastr", "ProdutoService",
     function ($uibModalInstance, $http, toastr, produtoService) {
 
-        const vm = this;
+        const self = this;
 
-        vm.product = {};
+        self.product = {};
 
-        vm.listaDeSituacoes = [
+        self.listaDeSituacoes = [
             {
                 nome: "Disponivel",
                 valor: 1
@@ -30,7 +30,7 @@ app.controller("CriaProdutoCtrl", ["$uibModalInstance", "$http", "toastr", "Prod
             produtoService.cria(JSON.stringify(product))
                 .then(response => {
                     toastr.success("Produto adicionado com sucesso!");
-                    vm.product = {};
+                    self.product = {};
                     $uibModalInstance.close(201);
                 }).catch(error => {
                     console.log(error);
