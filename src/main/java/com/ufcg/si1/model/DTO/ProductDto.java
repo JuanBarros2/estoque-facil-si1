@@ -14,13 +14,13 @@ public class ProdutoDTO implements Serializable {
 
     private Long id;
 
-    private String nome;
+    private String name;
 
-    private Double preco;
+    private Double price;
 
-    private String categoria;
+    private String category;
 
-    private String fabricante;
+    private String manufacturer;
 
     private Integer quantidade;
 
@@ -29,10 +29,10 @@ public class ProdutoDTO implements Serializable {
         Produto produto = produtoLote.getProduto();
         Categoria categoria = produto.getCategoria();
         this.id = produto.getId();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco() - categoria.applyDiscount(produto.getPreco());
-        this.fabricante = produto.getFabricante();
-        this.categoria = categoria.getNome();
+        this.name = produto.getNome();
+        this.price = produto.getPreco() - categoria.applyDiscount(produto.getPreco());
+        this.manufacturer = produto.getFabricante();
+        this.category = categoria.getNome();
         this.quantidade = 0;
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         for(Lote lote : produtoLote.getLotes()){
@@ -48,36 +48,36 @@ public class ProdutoDTO implements Serializable {
     }
 
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getFabricante() {
-        return fabricante;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    public void setFabricante(String fabricante) {
-        this.fabricante = fabricante;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public Integer getQuantidade() {

@@ -2,15 +2,15 @@ package com.ufcg.si1.service;
 
 import java.util.List;
 
-import com.ufcg.si1.model.Venda;
+import com.ufcg.si1.model.Sale;
 
 public interface VendaService {
 
-	List<Venda> findAllVendas();
+	List<Sale> findAllVendas();
 	
-	Venda findById(long id);
+	Sale findById(long id);
 	
-	void saveVenda(Venda venda);
+	void saveVenda(Sale sale);
 	
 	void deleteVendaById(long id);
 	
