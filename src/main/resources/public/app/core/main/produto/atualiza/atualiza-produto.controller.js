@@ -1,8 +1,10 @@
-app.controller("AtualizaProdutoCtrl", function ($scope, $uibModalInstance, mainService, toastr, produto) {
+app.controller("AtualizaProdutoCtrl", function ($uibModalInstance, mainService, toastr, produto) {
 
-    $scope.produto = produto;
+    const self = this;
 
-    $scope.submit = function (product) {
+    self.produto = produto;
+
+    self.submit = function (product) {
         mainService.atualizaPorId(product.id, product)
             .then(function success(response) {
 
@@ -20,7 +22,7 @@ app.controller("AtualizaProdutoCtrl", function ($scope, $uibModalInstance, mainS
 
     };
 
-    $scope.cancel = function () {
+    self.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
 });

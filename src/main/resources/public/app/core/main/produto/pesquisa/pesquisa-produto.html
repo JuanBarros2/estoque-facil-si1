@@ -4,7 +4,7 @@
       <span class="title">Produtos</span>
       <ul class="pull-right c-controls">
         <li>
-          <a class="btn btn-success" ng-click="openCreateProductDialog()">Adicionar Produto</a>
+          <a class="btn btn-success" ng-click="pesquisaProdutoCtrl.openCreateProductDialog()">Adicionar Produto</a>
         </li>
       </ul>
     </div>
@@ -14,14 +14,14 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="c-search">
-          <input type="text" class="form-control" placeholder="Pesquisar produto" ng-model="productName" id="product-list-search">
+          <input type="text" class="form-control" placeholder="Pesquisar product" ng-model="pesquisaProdutoCtrl.productName" id="product-list-search">
         </div>
       </div>
     </div>
   </div>
 
   <div class="flex-row row">
-    <div class="col-xs-6 col-sm-5 col-lg-4" ng-repeat="product in productsList | filter:productName | orderBy:'quantidade'">
+    <div class="col-xs-6 col-sm-5 col-lg-4" ng-repeat="product in pesquisaProdutoCtrl.productsList | filter:pesquisaProdutoCtrl.productName | orderBy:'quantidade'">
       <div class="thumbnail">
         <div class="caption">
           <uib-accordion>
@@ -52,8 +52,8 @@
               <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-              <li role="menuitem"><a ng-click="openAtribuirPrecoParaProdutoDialog(product)">Atribuir preço</a></li>
-              <li role="menuitem"><a ng-click="openCriarLoteDialog(product)">Criar lote</a></li>
+              <li role="menuitem"><a ng-click="pesquisaProdutoCtrl.openAtribuirPrecoParaProdutoDialog(product)">Atribuir preço</a></li>
+              <li role="menuitem"><a ng-click="pesquisaProdutoCtrl.openCriarLoteDialog(product)">Criar lot</a></li>
             </ul>
           </div>
 

@@ -5,9 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-import com.ufcg.si1.model.Papel.Modulo.Constants;
-import com.ufcg.si1.model.Venda;
-import com.ufcg.si1.service.VendaServiceImpl;
+import com.ufcg.si1.model.Role.Module.Constants;
+import com.ufcg.si1.model.Sale;
+import com.ufcg.si1.service.SaleServiceImpl;
 
 @RestController
 @RequestMapping("/venda")
@@ -15,12 +15,12 @@ import com.ufcg.si1.service.VendaServiceImpl;
 public class VendaController {
 	
     @Autowired 
-    private VendaServiceImpl vendaService;
+    private SaleServiceImpl vendaService;
     
     @GetMapping(value = "/registro")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @Secured({Constants.ADM})
-    public Iterable<Venda> findAllVendas(){
+    public Iterable<Sale> findAllVendas(){
         return vendaService.findAllVendas();
     }
 

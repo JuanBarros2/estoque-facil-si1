@@ -1,19 +1,22 @@
-app.controller("PesquisaProdutoCtrl", ["$scope", "$uibModal", "$http", "toastr", "ProdutoService",
-    function ($scope, $uibModal, $http, toastr, produtoService) {
-        $scope.productsList = [];
-        $scope.produtos = [];
+app.controller("PesquisaProdutoCtrl", ["$uibModal", "$http", "toastr", "ProdutoService",
+    function ($uibModal, $http, toastr, produtoService) {
+
+        const self = this;
+
+        self.productsList = [];
+        self.produtos = [];
 
         const loadProductsList = function () {
             produtoService.todos()
                 .then(response => {
-                    $scope.productsList = response.data
+                    self.productsList = response.data
                 })
                 .catch(error => {
                     console.log(error);
                 });
         };
 
-        $scope.openCreateProductDialog = function () {
+        self.openCreateProductDialog = function () {
             const modalInstance = $uibModal.open({
                 ariaLabelledBy: 'Adicionar Produto',
                 ariaDescribedBy: 'Formulario para adição de um novo produto',
@@ -29,7 +32,7 @@ app.controller("PesquisaProdutoCtrl", ["$scope", "$uibModal", "$http", "toastr",
             });
         };
 
-        $scope.openAtribuirPrecoParaProdutoDialog = function (product) {
+        self.openAtribuirPrecoParaProdutoDialog = function (product) {
             const modalInstance = $uibModal.open({
                 ariaLabelledBy: 'Atribuir preço a Produto',
                 ariaDescribedBy: 'Formulario para Atribuir preço a Produto',
@@ -49,19 +52,19 @@ app.controller("PesquisaProdutoCtrl", ["$scope", "$uibModal", "$http", "toastr",
             });
         };
 
-        $scope.pesquisarProdutoPorId = function (id) {
+        self.pesquisarProdutoPorId = function (id) {
             // implementar
             produtoService.pesquisaPorId(id)
-                .then(function successCallback(response) {
-                    $scope.productsList = [
+                .then(response => {
+                    self.productsList = [
                         response.data
                     ];
-                }, function errorCallback(error) {
+                }).catch(error => {
                     toastr.error("Produto não encontrado");
                 });
         };
 
-        $scope.openCriarLoteDialog = function (product) {
+        self.openCriarLoteDialog = function (product) {
             const modalInstance = $uibModal.open({
                 ariaLabelledBy: 'Criar lote',
                 ariaDescribedBy: 'Formulario para criar lote',

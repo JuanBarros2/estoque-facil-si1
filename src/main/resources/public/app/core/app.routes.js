@@ -8,12 +8,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/",
             templateUrl: "app/core/main/usuario/auth/loga.html",
             controller: 'LogaCtrl',
-            controllerAs: "vm"
+            controllerAs: "logaCtrl"
         })
 
         .state("produto", {
             url: "/produto",
             templateUrl: "app/core/main/produto/pesquisa/pesquisa-produto.html",
-            controller: "PesquisaProdutoCtrl"
+            controller: "PesquisaProdutoCtrl",
+            controllerAs: "pesquisaProdutoCtrl"
         })
 });

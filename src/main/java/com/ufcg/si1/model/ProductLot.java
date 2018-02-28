@@ -6,33 +6,33 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class ProdutoLote {
+public class ProductLot {
     @Id
     @GeneratedValue
     private Long id;
     @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    private Produto produto;
+    private Product product;
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    private List<Lote> lotes;
+    private List<Lot> lots;
 
-    public ProdutoLote(Produto produto){
-        this.produto = produto;
-        this.lotes = new ArrayList<>();
+    public ProductLot(Product Product){
+        this.product = Product;
+        this.lots = new ArrayList<>();
     }
-    public ProdutoLote(){}
+    public ProductLot(){}
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProdutoLote that = (ProdutoLote) o;
-        return Objects.equals(produto, that.produto);
+        ProductLot that = (ProductLot) o;
+        return Objects.equals(product, that.product);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(produto);
+        return Objects.hash(product);
     }
 
     public Long getId() {
@@ -43,21 +43,21 @@ public class ProdutoLote {
         this.id = id;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProduct(Product Product) {
+        this.product = Product;
     }
 
-    public List<Lote> getLotes() {
-        return lotes;
+    public List<Lot> getLots() {
+        return lots;
     }
 
-    public void adicionarLote(Lote lote) {
-        if(lote != null){
-            this.lotes.add(lote);
+    public void addLot(Lot lot) {
+        if(lot != null){
+            this.lots.add(lot);
         }
     }
 }

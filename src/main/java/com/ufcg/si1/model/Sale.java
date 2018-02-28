@@ -1,49 +1,45 @@
 package com.ufcg.si1.model;
 
-import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class ItemVenda {
-	
+public class Sale {
 	@Id
     @GeneratedValue
 	private long id;
-	@ManyToOne
-	private Produto produto;
-	private int quantidade;
-	private double preco;
-	
-	
+	@OneToMany
+    private List<SaleItem> items;
+	private Date saleDate;
+
+
 	public long getId() {
 		return id;
 	}
-	
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	public Produto getProduto() {
-		return produto;
+
+	public List<SaleItem> getItems() {
+		return items;
 	}
-	
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+
+	public void setItems(List<SaleItem> items) {
+		this.items = items;
 	}
-	
-	public int getQuantidade() {
-		return quantidade;
+
+	public Date getSaleDate() {
+		return saleDate;
 	}
-	
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-	
-	public double getPreco() {
-		return preco;
-	}
-	
-	public void setPreco(double preco) {
-		this.preco = preco;
+
+	public void setSaleDate(Date saleDate) {
+		this.saleDate = saleDate;
 	}
 
 	@Override
@@ -62,10 +58,11 @@ public class ItemVenda {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ItemVenda other = (ItemVenda) obj;
+		Sale other = (Sale) obj;
 		if (id != other.id)
 			return false;
 		return true;
-	}	
-	
+	}
+    
+    
 }

@@ -6,7 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 
 @Entity
-public class Papel implements GrantedAuthority {
+public class Role implements GrantedAuthority {
 
     private static final long serialVersionUID = 1L;
 
@@ -15,22 +15,22 @@ public class Papel implements GrantedAuthority {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    private Modulo nome;
+    private Module nome;
 
     @ManyToOne
     @JsonIgnore
-    private Usuario usuario;
+    private User user;
 
     @Override
     public String getAuthority() {
         return nome.toString();
     }
 
-    public enum Modulo {
+    public enum Module {
         ADM("ROLE_ADM"), CLI("ROLE_CLI");
         private String modulo;
 
-        private Modulo(String modulo) {
+        private Module(String modulo) {
             this.modulo = modulo;
         }
 
@@ -53,24 +53,24 @@ public class Papel implements GrantedAuthority {
         this.id = id;
     }
 
-    public Modulo getNome() {
+    public Module getNome() {
         return nome;
     }
 
-    public void setNome(Modulo nome) {
+    public void setNome(Module nome) {
         this.nome = nome;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
-        return "Papel [id=" + id + ", nome=" + nome + "]";
+        return "Role [id=" + id + ", nome=" + nome + "]";
     }
 }

@@ -1,9 +1,7 @@
 package com.ufcg.si1.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ufcg.si1.model.Papel;
-import com.ufcg.si1.model.Usuario;
-import exceptions.ObjetoInvalidoException;
+import com.ufcg.si1.model.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,8 +13,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -30,8 +26,8 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException {
         try {
-            Usuario creds = new ObjectMapper()
-                    .readValue(req.getInputStream(), Usuario.class);
+            User creds = new ObjectMapper()
+                    .readValue(req.getInputStream(), User.class);
 
             return getAuthenticationManager().authenticate(
                     new UsernamePasswordAuthenticationToken(

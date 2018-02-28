@@ -9,7 +9,8 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Usuario implements UserDetails {
+@Table(name = "TBUser")
+public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
@@ -19,19 +20,19 @@ public class Usuario implements UserDetails {
     @NotEmpty
     private String email;
     @NotEmpty
-    private String senha;
+    private String password;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Papel> papeis;
+    private List<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return papeis;
+        return roles;
     }
 
     @Override
     public String getPassword() {
-        return senha;
+        return password;
     }
 
     @Override
@@ -67,12 +68,8 @@ public class Usuario implements UserDetails {
         this.id = id;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -83,16 +80,16 @@ public class Usuario implements UserDetails {
         this.email = email;
     }
 
-    public List<Papel> getPapeis() {
-        return papeis;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setPapeis(List<Papel> papeis) {
-        this.papeis = papeis;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", senha=" + senha + ", email=" + email + "]";
+        return "User [id=" + id + ", senha=" + password + ", email=" + email + "]";
     }
 }
