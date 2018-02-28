@@ -9,13 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Venda {
+public class Sale {
 	@Id
     @GeneratedValue
 	private long id;
 	
 	@OneToMany
-    private List<ItemVenda> itens;
+    private List<SaleItem> itens;
 
 	private Date dataVenda;
 	
@@ -27,11 +27,11 @@ public class Venda {
 		this.id = id;
 	}
 
-	public List<ItemVenda> getItens() {
+	public List<SaleItem> getItens() {
 		return itens;
 	}
 
-	public void setItens(List<ItemVenda> itens) {
+	public void setItens(List<SaleItem> itens) {
 		this.itens = itens;
 	}	
 
@@ -59,7 +59,7 @@ public class Venda {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Venda other = (Venda) obj;
+		Sale other = (Sale) obj;
 		if (id != other.id)
 			return false;
 		return true;

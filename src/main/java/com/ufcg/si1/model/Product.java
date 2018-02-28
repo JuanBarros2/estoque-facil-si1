@@ -3,42 +3,42 @@ package com.ufcg.si1.model;
 import javax.persistence.*;
 
 @Entity
-public class Produto {
+public class Product {
 	@Id @GeneratedValue
 	private Long id;
-	private String nome;
-	private Double preco;
-	private String codigoBarra;
-	private String fabricante;
+	private String name;
+	private Double price;
+	private String barcode;
+	private String manufacturer;
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	private Categoria categoria;
+	private Category category;
 
-	public Produto() {
+	public Product() {
 	}
 
-	public Produto(String nome, Double preco, String codigoBarra, String fabricante,
-			String nomeCategoria) {
-		this.nome = nome;
-		this.preco = preco;
-		this.codigoBarra = codigoBarra;
-		this.fabricante = fabricante;
-		this.categoria = new Categoria(nomeCategoria);
+	public Product(String name, Double price, String barcode, String manufacturer,
+				   String category) {
+		this.name = name;
+		this.price = price;
+		this.barcode = barcode;
+		this.manufacturer = manufacturer;
+		this.category = new Category(category);
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Double getPreco() {
-		return preco;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setPreco(Double preco) {
-		this.preco = preco;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public Long getId() {
@@ -49,36 +49,36 @@ public class Produto {
 		this.id = id;
 	}
 
-	public String getFabricante() {
-		return fabricante;
+	public String getManufacturer() {
+		return manufacturer;
 	}
 
-	public void setFabricante(String fabricante) {
-		this.fabricante = fabricante;
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
-	public Categoria getCategoria() {
-		return this.categoria;
+	public Category getCategory() {
+		return this.category;
 	}
 
-	public String getCodigoBarra() {
-		return codigoBarra;
+	public String getBarcode() {
+		return barcode;
 	}
 
-	public void setCodigoBarra(String codigoBarra) {
-		this.codigoBarra = codigoBarra;
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((fabricante == null) ? 0 : fabricante.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((manufacturer == null) ? 0 : manufacturer.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -90,16 +90,16 @@ public class Produto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
-		if (fabricante == null) {
-			if (other.fabricante != null)
+		Product other = (Product) obj;
+		if (manufacturer == null) {
+			if (other.manufacturer != null)
 				return false;
-		} else if (!fabricante.equals(other.fabricante))
+		} else if (!manufacturer.equals(other.manufacturer))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}

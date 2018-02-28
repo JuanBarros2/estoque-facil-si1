@@ -1,7 +1,7 @@
 package com.ufcg.si1.controller;
 
-import com.ufcg.si1.model.DTO.LoteDTO;
-import com.ufcg.si1.model.DTO.ProdutoDTO;
+import com.ufcg.si1.model.DTO.LotDto;
+import com.ufcg.si1.model.DTO.ProductDto;
 import exceptions.ObjetoInexistenteException;
 import exceptions.ObjetoJaExistenteException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +11,11 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import com.ufcg.si1.model.*;
-import com.ufcg.si1.service.ProdutoLoteServiceImpl;
+import com.ufcg.si1.service.ProductLotServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.ufcg.si1.model.Papel.Modulo.*;
+import com.ufcg.si1.model.Role.Module.*;
 
 
 @RestController
@@ -23,99 +23,99 @@ import com.ufcg.si1.model.Papel.Modulo.*;
 public class ProdutoController {
 	
 	@Autowired
-	private ProdutoLoteServiceImpl produtoService;
+	private ProductLotServiceImpl productLotService;
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public Iterable<ProdutoDTO> findAllProdutos(){
-		ArrayList<ProdutoDTO> produtos = new ArrayList<>();
-		produtoService.findAllProdutos().forEach(produtoLote -> produtos.add(new ProdutoDTO(produtoLote)) );
-		return produtos;
+	public Iterable<ProductDto> findAllProdutos(){
+		ArrayList<ProductDto> products = new ArrayList<>();
+		productLotService.findAllProdutos().forEach(productLot -> products.add(new ProductDto(productLot)) );
+		return products;
 	}
 
 	@PostMapping
 	@Secured({Constants.ADM})
 	@ResponseStatus(HttpStatus.CREATED)
-	public Produto createProduto(@RequestBody Produto produto) throws ObjetoJaExistenteException {
+	public Product createProduto(@RequestBody Product product) throws ObjetoJaExistenteException {
 
-		ProdutoLote produtoLote = new ProdutoLote(produto);
-		boolean produtoExiste = produtoService.doesProdutoExist(produtoLote);
+		ProductLot productLot = new ProductLot(product);
+		boolean exist = productLotService.doesProdutoExist(productLot);
 
-		if (produtoExiste) {
-			throw new ObjetoJaExistenteException("O produto " + produto.getNome() + " do fabricante "
-					+ produto.getFabricante() + " ja esta cadastrado!");
+		if (exist) {
+			throw new ObjetoJaExistenteException("O product " + product.getName() + " do fabricante "
+					+ product.getManufacturer() + " ja esta cadastrado!");
 		}
 
-		produtoService.saveProduto(produtoLote);
-		return produto;
+		productLotService.saveProduto(productLot);
+		return product;
 	}
 
 	@GetMapping(value = "/{id}")
 	@Secured({Constants.ADM})
-	public Produto consultarProduto(@PathVariable("id") long id) throws ObjetoInexistenteException {
+	public Product searchProduct(@PathVariable("id") long id) throws ObjetoInexistenteException {
 
-		ProdutoLote p = produtoService.findById(id);
+		ProductLot p = productLotService.findById(id);
 
 		if (p == null) {
-			throw new ObjetoInexistenteException("Produto with id " + id + " not found");
+			throw new ObjetoInexistenteException("Product with id " + id + " not found");
 		}
-		return p.getProduto();
+		return p.getProduct();
 	}
 
 	@PutMapping(value = "{id}")
 	@Secured({Constants.ADM})
-	public Produto updateProduto(@PathVariable("id") long id, @RequestBody Produto produto) throws ObjetoInexistenteException {
+	public Product updateProduto(@PathVariable("id") long id, @RequestBody Product product) throws ObjetoInexistenteException {
 
-		ProdutoLote currentProduto = produtoService.findById(id);
+		ProductLot currentProduto = productLotService.findById(id);
 
 		if (currentProduto == null) {
-			throw new ObjetoInexistenteException("Unable to update. Produto with id " + id + " not found");
+			throw new ObjetoInexistenteException("Unable to update. Product with id " + id + " not found");
 		}
 
-		Produto produtoUpdate = currentProduto.getProduto();
+		Product productUpdate = currentProduto.getProduct();
 
-		produtoUpdate.setNome(produto.getNome());
-		produtoUpdate.setPreco(produto.getPreco());
-		produtoUpdate.setCodigoBarra(produto.getCodigoBarra());
-		produtoUpdate.setFabricante(produto.getFabricante());
-		produtoUpdate.setCategoria(produto.getCategoria());
+		productUpdate.setName(product.getName());
+		productUpdate.setPrice(product.getPrice());
+		productUpdate.setBarcode(product.getBarcode());
+		productUpdate.setManufacturer(product.getManufacturer());
+		productUpdate.setCategory(product.getCategory());
 
-		produtoService.updateProduto(currentProduto);
-		return produtoUpdate;
+		productLotService.updateProduto(currentProduto);
+		return productUpdate;
 	}
 
 	@DeleteMapping(value = "{id}")
 	@Secured({Constants.ADM})
 	public ResponseEntity<?> deleteUser(@PathVariable("id") long id) throws ObjetoInexistenteException {
 
-		ProdutoLote user = produtoService.findById(id);
+		ProductLot productLot = productLotService.findById(id);
 
-		if (user == null) {
-			throw new ObjetoInexistenteException("Unable to delete. Produto with id " + id + " not found.");
+		if (productLot == null) {
+			throw new ObjetoInexistenteException("Unable to delete. Product with id " + id + " not found.");
 		}
-		produtoService.deleteProdutoById(id);
-		return new ResponseEntity<Produto>(HttpStatus.NO_CONTENT);
+		productLotService.deleteProdutoById(id);
+		return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
 	}
 
 	@RequestMapping(value = "/{id}/lote", method = RequestMethod.POST)
 	@Secured({Constants.ADM})
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<?> criarLote(@PathVariable("id") long produtoId, @RequestBody LoteDTO loteDTO)  throws ObjetoInexistenteException{
-		ProdutoLote productLote = produtoService.findById(produtoId);
+	public ResponseEntity<?> criarLote(@PathVariable("id") long produtoId, @RequestBody LotDto lotDto)  throws ObjetoInexistenteException{
+		ProductLot productLote = productLotService.findById(produtoId);
 
 		if (productLote == null) {
-			throw new ObjetoInexistenteException("Unable to create lote. Produto with id " + produtoId + " not found.");
+			throw new ObjetoInexistenteException("Unable to create lot. Product with id " + produtoId + " not found.");
 		}
-		Lote lote = new Lote(loteDTO.getNumeroDeItens(), loteDTO.getDataDeValidade());
-		productLote.adicionarLote(lote);
-		produtoService.updateProduto(productLote);
-		return new ResponseEntity<>(lote, HttpStatus.CREATED);
+		Lot lot = new Lot(lotDto.getItensAmount(), lotDto.getExpirationDate());
+		productLote.addLot(lot);
+		productLotService.updateProduto(productLote);
+		return new ResponseEntity<>(lot, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/lote/", method = RequestMethod.GET)
 	@Secured({Constants.ADM})
-	public List<ProdutoLote> listAllLotes() {
-		return produtoService.findAllProdutos();
+	public List<ProductLot> listAllLotes() {
+		return productLotService.findAllProdutos();
 	}
 
 }

@@ -5,29 +5,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Lote {
+public class Lot {
 
     @Id
     @GeneratedValue
     private long id;
 
     private int itensAmount;
-    private String dataDeValidade;
+    private String expirationDate;
 
-    public Lote() {
+    public Lot() {
         this.id = 0;
     }
 
-    public Lote(int itensAmount, String dataDeValidade) {
+    public Lot(int itensAmount, String dataDeValidade) {
         super();
         this.itensAmount = itensAmount;
-        this.dataDeValidade = dataDeValidade;
+        this.expirationDate = dataDeValidade;
     }
 
-    public Lote(long id, int itensAmount, String dataDeValidade) {
+    public Lot(long id, int itensAmount, String dataDeValidade) {
         this.id = id;
         this.itensAmount = itensAmount;
-        this.dataDeValidade = dataDeValidade;
+        this.expirationDate = dataDeValidade;
     }
 
     public long getId() {
@@ -46,20 +46,11 @@ public class Lote {
         this.itensAmount = itensAmount;
     }
 
-    public String getDataDeValidade() {
-        return dataDeValidade;
+    public String getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setDataDeValidade(String dataDeValidade) {
-        this.dataDeValidade = dataDeValidade;
-    }
-
-    @Override
-    public String toString() {
-        return "Lote{" +
-                "id=" + id +
-                ", itensAmount=" + itensAmount +
-                ", dataDeValidade='" + dataDeValidade + '\'' +
-                '}';
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
     }
 }

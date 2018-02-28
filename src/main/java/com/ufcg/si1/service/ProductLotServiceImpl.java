@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProdutoLoteServiceImpl implements ProdutoLoteService {
+public class ProductLotServiceImpl implements ProductLotService {
 
 	@Autowired
 	private ProductLotRepository productLotRepository;
@@ -17,9 +17,9 @@ public class ProdutoLoteServiceImpl implements ProdutoLoteService {
 	@Override
 	public List<ProductLot> findAllProdutos() {
 		Iterable<ProductLot> it = productLotRepository.findAll();
-		List<ProductLot> produtos = new ArrayList<>();
-		it.forEach(produtos::add);
-		return produtos;
+		List<ProductLot> productLots = new ArrayList<>();
+		it.forEach(productLots::add);
+		return productLots;
 	}
 
 	@Override
@@ -43,20 +43,9 @@ public class ProdutoLoteServiceImpl implements ProdutoLoteService {
 	}
 
 	@Override
-	public long size() {
-		return productLotRepository.count();
-	}
-
-	@Override
-	public Iterator<ProductLot> getIterator() {
-		Iterable<ProductLot> iterable = productLotRepository.findAll();
-		return iterable.iterator();
-	}
-
-	@Override
 	public boolean doesProdutoExist(ProductLot productLot) {
-		Product Product = productLot.getProduct();
-		productLot = productLotRepository.findFirstByProduct_NameAndProduct_Manufacturer(Product.getName(), Product.getManufacturer());
+		Product product = productLot.getProduct();
+		productLot = productLotRepository.findFirstByProduct_NameAndProduct_Manufacturer(product.getName(), product.getManufacturer());
 		return  productLot != null;
 	}
 

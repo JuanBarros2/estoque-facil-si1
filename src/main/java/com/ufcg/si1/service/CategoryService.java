@@ -5,7 +5,7 @@ import com.ufcg.si1.model.Category;
 import java.util.Iterator;
 import java.util.List;
 
-public interface CategoriaService {
+public interface CategoryService {
     List<Category> findAllCategoria();
 
     Category findById(long id);

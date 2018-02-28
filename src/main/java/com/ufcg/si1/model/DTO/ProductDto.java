@@ -1,16 +1,16 @@
 package com.ufcg.si1.model.DTO;
 
-import com.ufcg.si1.model.Categoria;
-import com.ufcg.si1.model.Lote;
-import com.ufcg.si1.model.Produto;
-import com.ufcg.si1.model.ProdutoLote;
+import com.ufcg.si1.model.Category;
+import com.ufcg.si1.model.Lot;
+import com.ufcg.si1.model.Product;
+import com.ufcg.si1.model.ProductLot;
 
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ProdutoDTO implements Serializable {
+public class ProductDto implements Serializable {
 
     private Long id;
 
@@ -25,21 +25,21 @@ public class ProdutoDTO implements Serializable {
     private Integer quantidade;
 
 
-    public ProdutoDTO(ProdutoLote produtoLote) {
-        Produto produto = produtoLote.getProduto();
-        Categoria categoria = produto.getCategoria();
-        this.id = produto.getId();
-        this.name = produto.getNome();
-        this.price = produto.getPreco() - categoria.applyDiscount(produto.getPreco());
-        this.manufacturer = produto.getFabricante();
-        this.category = categoria.getNome();
+    public ProductDto(ProductLot productLot) {
+        Product product = productLot.getProduct();
+        Category category = product.getCategory();
+        this.id = product.getId();
+        this.name = product.getName();
+        this.price = product.getPrice() - category.applyDiscount(product.getPrice());
+        this.manufacturer = product.getManufacturer();
+        this.category = category.getName();
         this.quantidade = 0;
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        for(Lote lote : produtoLote.getLotes()){
+        for(Lot lot : productLot.getLots()){
             try {
-                Date data = formato.parse(lote.getDataDeValidade());
+                Date data = formato.parse(lot.getExpirationDate());
                 if (data.after(new Date())){
-                    this.quantidade += lote.getNumeroDeItens();
+                    this.quantidade += lot.getItensAmount();
                 }
             } catch (ParseException e) {
                 e.printStackTrace();

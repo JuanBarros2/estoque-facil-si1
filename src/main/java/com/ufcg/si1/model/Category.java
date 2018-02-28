@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Categoria {
+public class Category {
     @Id
     @GeneratedValue
     private Long id;
@@ -13,10 +13,10 @@ public class Categoria {
     
     private double discount;
 
-    public Categoria() {
+    public Category() {
     }
 
-    public Categoria(String name) {
+    public Category(String name) {
         this.name = name;
         this.discount = 0;
     }
@@ -49,8 +49,8 @@ public class Categoria {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Categoria categoria = (Categoria) o;
-        return Objects.equals(name, categoria.name);
+        Category category = (Category) o;
+        return Objects.equals(name, category.name);
     }
 
     @Override

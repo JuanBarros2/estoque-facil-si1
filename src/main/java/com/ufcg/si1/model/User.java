@@ -9,7 +9,8 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Usuario implements UserDetails {
+@Table(name = "TBUser")
+public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,7 +23,7 @@ public class Usuario implements UserDetails {
     private String senha;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Papel> papeis;
+    private List<Role> papeis;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -83,16 +84,16 @@ public class Usuario implements UserDetails {
         this.email = email;
     }
 
-    public List<Papel> getPapeis() {
+    public List<Role> getPapeis() {
         return papeis;
     }
 
-    public void setPapeis(List<Papel> papeis) {
+    public void setPapeis(List<Role> papeis) {
         this.papeis = papeis;
     }
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", senha=" + senha + ", email=" + email + "]";
+        return "User [id=" + id + ", senha=" + senha + ", email=" + email + "]";
     }
 }

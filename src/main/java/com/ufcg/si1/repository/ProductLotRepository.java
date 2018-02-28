@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProdutoLoteRepository extends CrudRepository<ProductLot, Long> {
+public interface ProductLotRepository extends CrudRepository<ProductLot, Long> {
 
     ProductLot findFirstByProductId(long id);
 

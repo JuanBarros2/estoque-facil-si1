@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.ufcg.si1.model.ProductLot;
 
-public interface ProdutoLoteService {
+public interface ProductLotService {
 
 	List<ProductLot> findAllProdutos();
 
@@ -16,10 +16,6 @@ public interface ProdutoLoteService {
 	void updateProduto(ProductLot user);
 
 	void deleteProdutoById(long id);
-
-	long size();
-
-	Iterator getIterator();
 
 	boolean doesProdutoExist(ProductLot produto);
 }

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.ufcg.si1.model.Sale;
 import com.ufcg.si1.repository.SaleRepository;
 
-@Service("vendaService")
-public class VendaServiceImpl implements VendaService{
+@Service
+public class SaleServiceImpl implements SaleService {
 	
 	@Autowired
 	private SaleRepository saleRepository;

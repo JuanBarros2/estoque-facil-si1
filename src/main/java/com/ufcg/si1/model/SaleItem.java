@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class ItemVenda {
+public class SaleItem {
 	
 	@Id
     @GeneratedValue
@@ -68,7 +68,7 @@ public class ItemVenda {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ItemVenda other = (ItemVenda) obj;
+		SaleItem other = (SaleItem) obj;
 		if (id != other.id)
 			return false;
 		return true;

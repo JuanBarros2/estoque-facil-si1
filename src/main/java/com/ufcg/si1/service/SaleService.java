@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ufcg.si1.model.Sale;
 
-public interface VendaService {
+public interface SaleService {
 
 	List<Sale> findAllVendas();
 	
