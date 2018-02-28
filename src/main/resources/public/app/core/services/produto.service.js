@@ -14,6 +14,10 @@ app.factory("ProdutoService", ["$http", "AppConfig", function ($http, AppConfig)
         return $http.get(`${baseServiceUrl}/${id}`);
     }
 
+    function _getLotsById(id) {
+        return $http.get(`${baseServiceUrl}/${id}/lote`);
+    }
+
     function _cria(produto) {
         return $http.post(`${baseServiceUrl}/`, produto)
             .then(response => {
@@ -24,10 +28,13 @@ app.factory("ProdutoService", ["$http", "AppConfig", function ($http, AppConfig)
             });
     }
 
+
+
     return {
         todos: _todos,
         atualizaPorId: _atualizaPorId,
         pesquisaPorId: _pesquisaPorId,
+        getLotsById: _getLotsById,
         cria: _cria
     };
 }]);

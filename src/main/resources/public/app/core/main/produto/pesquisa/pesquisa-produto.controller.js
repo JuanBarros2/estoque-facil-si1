@@ -31,8 +31,8 @@ app.controller("PesquisaProdutoCtrl", ["$scope", "$uibModal", "$http", "toastr",
 
         $scope.openAtribuirPrecoParaProdutoDialog = function (product) {
             const modalInstance = $uibModal.open({
-                ariaLabelledBy: 'Atribuir preço á Produto',
-                ariaDescribedBy: 'Formulario para Atribuir preço á Produto',
+                ariaLabelledBy: 'Atribuir preço a Produto',
+                ariaDescribedBy: 'Formulario para Atribuir preço a Produto',
                 templateUrl: 'app/core/main/atualiza-produto.html',
                 controller: 'UpdateProductPriceCtrl',
                 resolve: {
@@ -80,6 +80,10 @@ app.controller("PesquisaProdutoCtrl", ["$scope", "$uibModal", "$http", "toastr",
                 }
             });
         };
+
+        self.getLotsById = function (id) {
+            return produtoService.getLotsByIdId(id).data;
+        }
 
         loadProductsList();
         loadProductsList();
