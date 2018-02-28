@@ -44,8 +44,6 @@ public class EstoqueFacilRestApi {
 	@Bean
 	CommandLineRunner init(UsuarioRepository usuarioRepository,
 						   BCryptPasswordEncoder crypt,
-						   CategoriaRepository categoriaRepository,
-						   ProdutoRepository produtoRepository,
 						   ProdutoLoteRepository produtoLoteRepository) {
 		return (evt) -> {
 							Usuario usuario = new Usuario();

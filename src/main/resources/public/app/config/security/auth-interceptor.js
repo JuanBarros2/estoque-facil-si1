@@ -1,4 +1,4 @@
-app.factory('AuthInterceptor', ['$location', "AuthTokenService", function($location, AuthTokenService, $q) {
+app.factory('AuthInterceptor', ['$location', "AuthTokenService", "$q", function($location, AuthTokenService, $q) {
     return {
         request: function (config) {
             config.headers = config.headers || {};
