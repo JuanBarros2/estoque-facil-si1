@@ -13,12 +13,11 @@ public class Sale {
 	@Id
     @GeneratedValue
 	private long id;
-	
 	@OneToMany
-    private List<SaleItem> itens;
+    private List<SaleItem> items;
+	private Date saleDate;
 
-	private Date dataVenda;
-	
+
 	public long getId() {
 		return id;
 	}
@@ -27,20 +26,20 @@ public class Sale {
 		this.id = id;
 	}
 
-	public List<SaleItem> getItens() {
-		return itens;
+	public List<SaleItem> getItems() {
+		return items;
 	}
 
-	public void setItens(List<SaleItem> itens) {
-		this.itens = itens;
-	}	
-
-	public Date getDataVenda() {
-		return dataVenda;
+	public void setItems(List<SaleItem> items) {
+		this.items = items;
 	}
 
-	public void setDataVenda(Date dataVenda) {
-		this.dataVenda = dataVenda;
+	public Date getSaleDate() {
+		return saleDate;
+	}
+
+	public void setSaleDate(Date saleDate) {
+		this.saleDate = saleDate;
 	}
 
 	@Override

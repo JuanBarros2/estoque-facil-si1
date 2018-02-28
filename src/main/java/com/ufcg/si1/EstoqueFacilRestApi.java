@@ -45,10 +45,10 @@ public class EstoqueFacilRestApi {
 		return (evt) -> {
 							User user = new User();
 							user.setEmail("admin@admin.com");
-							user.setSenha(crypt.encode("admin"));
+							user.setPassword(crypt.encode("admin"));
 							Role role = new Role();
 							role.setNome(ADM);
-							user.setPapeis(Arrays.asList(role));
+							user.setRoles(Arrays.asList(role));
 							usuarioRepository.save(user);
 
 							ArrayList<ProductLot> productLots = new ArrayList<>();

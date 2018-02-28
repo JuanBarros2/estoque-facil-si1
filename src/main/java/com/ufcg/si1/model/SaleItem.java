@@ -13,11 +13,11 @@ public class SaleItem {
 	private long id;
 
 	@ManyToOne
-	private Product Product;
+	private Product product;
 
-	private int quantidade;
+	private int amount;
 
-	private double preco;
+	private double price;
 	
 	
 	public long getId() {
@@ -29,27 +29,27 @@ public class SaleItem {
 	}
 	
 	public Product getProduct() {
-		return Product;
+		return product;
 	}
 	
 	public void setProduct(Product Product) {
-		this.Product = Product;
+		this.product = Product;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public double getPrice() {
+		return price;
 	}
 	
-	public int getQuantidade() {
-		return quantidade;
-	}
-	
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-	
-	public double getPreco() {
-		return preco;
-	}
-	
-	public void setPreco(double preco) {
-		this.preco = preco;
+	public void setPrice(double preco) {
+		this.price = preco;
 	}
 
 	@Override
