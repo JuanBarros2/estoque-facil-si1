@@ -21,13 +21,13 @@
   </div>
 
   <div class="flex-row row">
-    <div class="col-xs-6 col-sm-5 col-lg-4" ng-repeat="product in pesquisaProdutoCtrl.productsList | filter:pesquisaProdutoCtrl.productName | orderBy:'quantidade'">
+    <div class="col-xs-6 col-sm-5 col-lg-4" ng-repeat="product in PesquisaProdutoCtrl.productsList | filter:pesquisaProdutoCtrl.productName | orderBy:'quantidade'">
       <div class="thumbnail">
         <div class="caption">
           <uib-accordion>
             <div uib-accordion-group heading={{product.nome}}>
               <h5 id="product-lots" ng-repeat="lot in PesquisaProdutoCtrl.getLotsById(product.id)">
-                {{lot.numeroDeItens}} são válidos até {{lot.dataDeValidade}}.
+                {{lot.itensAmount}} são válidos até {{lot.expirationDate}}.
               </h5>
               <h5 id="product-price">
                 <div ng-if="!product.preco">

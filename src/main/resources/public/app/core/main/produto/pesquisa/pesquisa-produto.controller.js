@@ -85,7 +85,12 @@ app.controller("PesquisaProdutoCtrl", ["$uibModal", "$http", "toastr", "ProdutoS
         };
 
         self.getLotsById = function (id) {
-            return produtoService.getLotsByIdId(id).data;
+            return produtoService.getLotsById(id)
+                .then(response => {
+                return response.data;
+                }).catch(error => {
+                        console.log(error);
+                });
         }
 
         loadProductsList();
