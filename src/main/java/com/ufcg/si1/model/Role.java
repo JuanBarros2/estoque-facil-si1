@@ -19,7 +19,7 @@ public class Papel implements GrantedAuthority {
 
     @ManyToOne
     @JsonIgnore
-    private Usuario usuario;
+    private User user;
 
     @Override
     public String getAuthority() {
@@ -61,12 +61,12 @@ public class Papel implements GrantedAuthority {
         this.nome = nome;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

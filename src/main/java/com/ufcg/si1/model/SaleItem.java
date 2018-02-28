@@ -1,6 +1,9 @@
 package com.ufcg.si1.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ItemVenda {
@@ -8,9 +11,12 @@ public class ItemVenda {
 	@Id
     @GeneratedValue
 	private long id;
+
 	@ManyToOne
-	private Produto produto;
+	private Product Product;
+
 	private int quantidade;
+
 	private double preco;
 	
 	
@@ -22,12 +28,12 @@ public class ItemVenda {
 		this.id = id;
 	}
 	
-	public Produto getProduto() {
-		return produto;
+	public Product getProduct() {
+		return Product;
 	}
 	
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setProduct(Product Product) {
+		this.Product = Product;
 	}
 	
 	public int getQuantidade() {

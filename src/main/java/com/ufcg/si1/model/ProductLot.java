@@ -11,12 +11,12 @@ public class ProdutoLote {
     @GeneratedValue
     private Long id;
     @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    private Produto produto;
+    private Product Product;
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Lote> lotes;
 
-    public ProdutoLote(Produto produto){
-        this.produto = produto;
+    public ProdutoLote(Product Product){
+        this.Product = Product;
         this.lotes = new ArrayList<>();
     }
     public ProdutoLote(){}
@@ -26,13 +26,13 @@ public class ProdutoLote {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProdutoLote that = (ProdutoLote) o;
-        return Objects.equals(produto, that.produto);
+        return Objects.equals(Product, that.Product);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(produto);
+        return Objects.hash(Product);
     }
 
     public Long getId() {
@@ -43,12 +43,12 @@ public class ProdutoLote {
         this.id = id;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public Product getProduct() {
+        return Product;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProduct(Product Product) {
+        this.Product = Product;
     }
 
     public List<Lote> getLotes() {

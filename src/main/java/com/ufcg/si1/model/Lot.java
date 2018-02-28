@@ -11,22 +11,22 @@ public class Lote {
     @GeneratedValue
     private long id;
 
-    private int numeroDeItens;
+    private int itensAmount;
     private String dataDeValidade;
 
     public Lote() {
         this.id = 0;
     }
 
-    public Lote(int numeroDeItens, String dataDeValidade) {
+    public Lote(int itensAmount, String dataDeValidade) {
         super();
-        this.numeroDeItens = numeroDeItens;
+        this.itensAmount = itensAmount;
         this.dataDeValidade = dataDeValidade;
     }
 
-    public Lote(long id, int numeroDeItens, String dataDeValidade) {
+    public Lote(long id, int itensAmount, String dataDeValidade) {
         this.id = id;
-        this.numeroDeItens = numeroDeItens;
+        this.itensAmount = itensAmount;
         this.dataDeValidade = dataDeValidade;
     }
 
@@ -38,12 +38,12 @@ public class Lote {
         this.id = id;
     }
 
-    public int getNumeroDeItens() {
-        return numeroDeItens;
+    public int getItensAmount() {
+        return itensAmount;
     }
 
-    public void setNumeroDeItens(int numeroDeItens) {
-        this.numeroDeItens = numeroDeItens;
+    public void setItensAmount(int itensAmount) {
+        this.itensAmount = itensAmount;
     }
 
     public String getDataDeValidade() {
@@ -58,7 +58,7 @@ public class Lote {
     public String toString() {
         return "Lote{" +
                 "id=" + id +
-                ", numeroDeItens=" + numeroDeItens +
+                ", itensAmount=" + itensAmount +
                 ", dataDeValidade='" + dataDeValidade + '\'' +
                 '}';
     }
