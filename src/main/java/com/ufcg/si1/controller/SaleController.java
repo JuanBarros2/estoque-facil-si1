@@ -12,16 +12,16 @@ import com.ufcg.si1.service.SaleServiceImpl;
 @RestController
 @RequestMapping("/venda")
 @CrossOrigin
-public class VendaController {
+public class SaleController {
 	
     @Autowired 
-    private SaleServiceImpl vendaService;
+    private SaleServiceImpl saleService;
     
     @GetMapping(value = "/registro")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @Secured({Constants.ADM})
     public Iterable<Sale> findAllVendas(){
-        return vendaService.findAllVendas();
+        return saleService.findAllVendas();
     }
 
 }

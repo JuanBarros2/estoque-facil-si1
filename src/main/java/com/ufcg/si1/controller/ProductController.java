@@ -20,7 +20,7 @@ import com.ufcg.si1.model.Role.Module.*;
 
 @RestController
 @RequestMapping("/produto")
-public class ProdutoController {
+public class ProductController {
 	
 	@Autowired
 	private ProductLotServiceImpl productLotService;
