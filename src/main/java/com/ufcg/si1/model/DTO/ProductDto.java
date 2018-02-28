@@ -22,7 +22,7 @@ public class ProductDto implements Serializable {
 
     private String manufacturer;
 
-    private Integer quantidade;
+    private Integer amount;
 
 
     public ProductDto(ProductLot productLot) {
@@ -33,13 +33,13 @@ public class ProductDto implements Serializable {
         this.price = product.getPrice() - category.applyDiscount(product.getPrice());
         this.manufacturer = product.getManufacturer();
         this.category = category.getName();
-        this.quantidade = 0;
+        this.amount = 0;
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         for(Lot lot : productLot.getLots()){
             try {
                 Date data = formato.parse(lot.getExpirationDate());
                 if (data.after(new Date())){
-                    this.quantidade += lot.getItensAmount();
+                    this.amount += lot.getItensAmount();
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -80,12 +80,12 @@ public class ProductDto implements Serializable {
         this.manufacturer = manufacturer;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Long getId(){
