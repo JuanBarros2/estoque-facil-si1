@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class ObjetoInexistenteException extends Exception {
+public class EntityNotFoundException extends Exception {
 
-	public ObjetoInexistenteException(String erro) {
+	public EntityNotFoundException(String erro) {
 		super("ExcecaoDados: " + erro);
 	}
 }

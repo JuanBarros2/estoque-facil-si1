@@ -1,15 +1,26 @@
 package com.ufcg.si1.model;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Product {
+
 	@Id @GeneratedValue
 	private Long id;
+
 	private String name;
+
 	private Double price;
+
 	private String barcode;
+
 	private String manufacturer;
+
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Category category;
 

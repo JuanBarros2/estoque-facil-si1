@@ -12,6 +12,7 @@ public class Lot {
     private long id;
 
     private int itensAmount;
+
     private String expirationDate;
 
     public Lot() {

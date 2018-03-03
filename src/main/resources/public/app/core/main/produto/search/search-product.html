@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="well">
+        <div class="panel-heading c-list">
+            <span class="title">Produtos</span>
+            <ul class="pull-right c-controls">
+                <li>
+                    <a class="btn btn-success" ng-click="searchProductCtrl.openCreateProductDialog()">
+                        Adicionar Produto
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div class="row form-group">
+            <input type="text" class="c-search form-control" placeholder="Pesquisar produto"
+                   ng-model="productName" id="product-list-search">
+        </div>
+
+
+        <div class="flex-row row">
+            <div class="col-xs-6 col-sm-5 col-lg-4"
+                 ng-repeat="product in searchProductCtrl.productsList | filter:productName">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <uib-accordion>
+                            <div uib-accordion-group heading="{{product.name}}">
+                                <h5 id="product-lots" ng-repeat="lot in product.lots">
+                                    Lote com {{lot.itensAmount}} unidades válido até {{lot.expirationDate}}
+                                    <br>
+                                </h5>
+                                <h5 id="product-price">
+                                    R$ {{product.price ? product.price.toFixed(2).toString().replace('.', ',') : "-"}}
+                                </h5>
+                                <h5 id="product-situation">
+                                    {{product.amount ? "Disponível" : "Indisponível"}}
+                                </h5>
+                            </div>
+                        </uib-accordion>
+                        <div class="btn-group" uib-dropdown>
+                            <button id="single-button" type="button" class="btn btn-default pull-right"
+                                    uib-dropdown-toggle>
+                                <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu"
+                                aria-labelledby="single-button">
+
+                                <li role="menuitem">
+                                    <a ng-click="searchProductCtrl.updateProduct(product)">
+                                        Atualizar
+                                    </a>
+                                </li>
+
+                                <li role="menuitem"><a ng-click="searchProductCtrl.createLote(product)">Criar
+                                    Lote</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /.caption -->
+                </div>
+                <!-- /.thumbnail -->
+
+            </div>
+            <!-- /.flex-row  -->
+        </div>

@@ -1,21 +1,18 @@
 package com.ufcg.si1.service;
 
-import java.util.Iterator;
-import java.util.List;
-
+import com.ufcg.si1.model.Lot;
+import com.ufcg.si1.model.Product;
 import com.ufcg.si1.model.ProductLot;
+import exceptions.EntityNotFoundException;
+import exceptions.ObjetoJaExistenteException;
+
+import java.util.List;
 
 public interface ProductLotService {
 
-	List<ProductLot> findAllProdutos();
+    List<ProductLot> findAll();
 
-	void saveProduto(ProductLot produto);
+    ProductLot addLot(Long productId, Lot lot) throws EntityNotFoundException;
 
-	ProductLot findById(long id);
-
-	void updateProduto(ProductLot user);
-
-	void deleteProdutoById(long id);
-
-	boolean doesProdutoExist(ProductLot produto);
+    ProductLot createFromProduct(Product product);
 }

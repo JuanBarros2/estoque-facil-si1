@@ -10,16 +10,21 @@ public class ProductLot {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(unique = true)
     private Product product;
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Lot> lots;
 
-    public ProductLot(Product Product){
+    public ProductLot(Product Product) {
         this.product = Product;
         this.lots = new ArrayList<>();
     }
-    public ProductLot(){}
+
+    public ProductLot() {
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -56,7 +61,7 @@ public class ProductLot {
     }
 
     public void addLot(Lot lot) {
-        if(lot != null){
+        if (lot != null) {
             this.lots.add(lot);
         }
     }

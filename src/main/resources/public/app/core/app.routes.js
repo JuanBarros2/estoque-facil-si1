@@ -6,15 +6,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state("home", {
             url: "/",
-            templateUrl: "app/core/main/usuario/auth/loga.html",
+            templateUrl: "app/core/main/user/auth/loga.html",
             controller: 'LogaCtrl',
             controllerAs: "logaCtrl"
         })
 
         .state("produto", {
             url: "/produto",
-            templateUrl: "app/core/main/produto/pesquisa/pesquisa-produto.html",
-            controller: "PesquisaProdutoCtrl",
-            controllerAs: "pesquisaProdutoCtrl"
+            templateUrl: "app/core/main/produto/search/search-product.html",
+            controller: "SearchProductCtrl",
+            controllerAs: "searchProductCtrl"
         })
 });

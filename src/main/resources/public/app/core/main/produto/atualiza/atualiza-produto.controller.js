@@ -1,28 +1,23 @@
-app.controller("AtualizaProdutoCtrl", function ($uibModalInstance, mainService, toastr, produto) {
+app.controller("UpdateProductCtrl", ["$uibModalInstance", "ProductService", "toastr", "product",
+    function ($uibModalInstance, productService, toastr, product) {
+        const self = this;
 
-    const self = this;
+        product.price.toFixed(2);
 
-    self.produto = produto;
+        self.product = product;
 
-    self.submit = function (product) {
-        mainService.atualizaPorId(product.id, product)
-            .then(function success(response) {
-
-                if (response.status === 200) {
+        self.submit = function (product) {
+            productService.update(product)
+                .then(() => {
                     toastr.success("Produto editado com sucesso!");
-                    $uibModalInstance.close({
-                        status: 200,
-                        newProduct: response.data
-                    });
-                }
-            }, function error(error) {
-                console.log(error);
-                toastr.error("Problemas ao tentar atribuir preço ao produto: " + product.id);
-            });
+                    $uibModalInstance.close({status: 200});
+                })
+                .catch(function error() {
+                    toastr.error("Problemas ao tentar atualizar o produto");
+                });
+        };
 
-    };
-
-    self.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-    };
-});
+        self.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    }]);
