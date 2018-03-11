@@ -3,15 +3,17 @@ package com.ufcg.si1.service;
 import java.util.List;
 
 import com.ufcg.si1.model.Sale;
+import exceptions.InvalidAmountException;
+import exceptions.ObjetoJaExistenteException;
 
 public interface SaleService {
 
-	List<Sale> findAllVendas();
+	List<Sale> findAll();
 	
 	Sale findById(long id);
 	
-	void saveVenda(Sale sale);
+	Sale save(Sale sale) throws InvalidAmountException;
 	
-	void deleteVendaById(long id);
+	void delete(long id);
 	
 }

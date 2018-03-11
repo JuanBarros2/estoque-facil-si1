@@ -1,8 +1,11 @@
 package com.ufcg.si1.service;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.function.Consumer;
 
+import com.ufcg.si1.model.SaleItem;
+import exceptions.InvalidAmountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +18,12 @@ public class SaleServiceImpl implements SaleService {
 	@Autowired
 	private SaleRepository saleRepository;
 
+	@Autowired
+	private ProductLotService productLotService;
+
 	@Override
-	public List<Sale> findAllVendas() {
-		Iterable<Sale> it = saleRepository.findAll();
-		List<Sale> sales = new ArrayList<>();
-		it.forEach(sales::add);
-		return sales;
+	public List<Sale> findAll() {
+		return saleRepository.findAll();
 	}
 
 	@Override
@@ -29,14 +32,26 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public void saveVenda(Sale sale) {
-		saleRepository.save(sale);
+	public Sale save(Sale sale) throws InvalidAmountException {
+		this.discountProductStock(sale.getItems());
+		sale.setSaleDate(new Date());
+		return saleRepository.save(sale);
 	}
 
 	@Override
-	public void deleteVendaById(long id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(long id) {
+
+	}
+
+	/**
+	 * Receives a list of SaleItem and discounts the items from stock.
+	 * @param items
+	 */
+	private void discountProductStock(List<SaleItem> items) throws InvalidAmountException {
+		for(SaleItem item: items){
+			double price = productLotService.discountProductStock(item.getProduct().getId(), item.getAmount());
+			item.setPrice(price);
+		}
 	}
 
 }

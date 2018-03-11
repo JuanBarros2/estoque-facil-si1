@@ -44,6 +44,9 @@ public class Lot {
     }
 
     public void setItensAmount(int itensAmount) {
+        if(itensAmount < 0){
+            itensAmount = 0;
+        }
         this.itensAmount = itensAmount;
     }
 

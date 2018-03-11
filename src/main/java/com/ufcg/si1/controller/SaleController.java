@@ -1,5 +1,8 @@
 package com.ufcg.si1.controller;
 
+import com.ufcg.si1.service.SaleService;
+import exceptions.InvalidAmountException;
+import exceptions.ObjetoJaExistenteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -7,21 +10,26 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ufcg.si1.model.Role.Module.Constants;
 import com.ufcg.si1.model.Sale;
-import com.ufcg.si1.service.SaleServiceImpl;
 
 @RestController
-@RequestMapping("/venda")
+@RequestMapping("/sales")
 @CrossOrigin
 public class SaleController {
 	
     @Autowired 
-    private SaleServiceImpl saleService;
+    private SaleService saleService;
     
-    @GetMapping(value = "/registro")
+    @GetMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     @Secured({Constants.ADM})
-    public Iterable<Sale> findAllVendas(){
-        return saleService.findAllVendas();
+    public Iterable<Sale> findAll(){
+        return saleService.findAll();
+    }
+
+    @PostMapping
+    @Secured({Constants.ADM})
+    public Sale add(@RequestBody Sale sale) throws InvalidAmountException {
+        return saleService.save(sale);
     }
 
 }

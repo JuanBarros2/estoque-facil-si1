@@ -42,6 +42,14 @@ public class Sale {
 		this.saleDate = saleDate;
 	}
 
+	public Double getTotalPrice(){
+		Double total = 0D;
+		for(SaleItem item: items){
+			total += item.getPrice() * item.getAmount();
+		}
+		return total;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -31,8 +31,8 @@ public class ProductLotController {
     @PostMapping(value = "/lot/{id}")
     @Secured({Constants.ADM})
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ProductDto> addLot(@PathVariable("id") long produtoId, @RequestBody Lot lot) throws EntityNotFoundException {
-        ProductLot updatedProductLot = productLotService.addLot(produtoId, lot);
+    public ResponseEntity<ProductDto> addLot(@PathVariable("id") long productId, @RequestBody Lot lot) throws EntityNotFoundException {
+        ProductLot updatedProductLot = productLotService.addLot(productId, lot);
         return new ResponseEntity<>(new ProductDto(updatedProductLot), HttpStatus.CREATED);
     }
 }

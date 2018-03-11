@@ -84,6 +84,10 @@ public class Product {
 		this.barcode = barcode;
 	}
 
+	public Double getDiscountPrice() {
+		return this.getPrice() - this.category.applyDiscount(this.getPrice());
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,5 +117,10 @@ public class Product {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }
