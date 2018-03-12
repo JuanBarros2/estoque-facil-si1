@@ -15,8 +15,6 @@
             <input type="text" class="c-search form-control" placeholder="Pesquisar produto"
                    ng-model="productName" id="product-list-search">
         </div>
-
-
         <div class="flex-row row">
             <div class="col-xs-6 col-sm-5 col-lg-4"
                  ng-repeat="product in searchProductCtrl.productsList | filter:productName">
@@ -28,34 +26,41 @@
                                     Lote com {{lot.itensAmount}} unidades válido até {{lot.expirationDate}}
                                     <br>
                                 </h5>
-                                <h5 id="product-price">
-                                    R$ {{product.price ? product.price.toFixed(2).toString().replace('.', ',') : "-"}}
-                                </h5>
-                                <h5 id="product-situation">
-                                    {{product.amount ? "Disponível" : "Indisponível"}}
-                                </h5>
                             </div>
                         </uib-accordion>
-                        <div class="btn-group" uib-dropdown>
-                            <button id="single-button" type="button" class="btn btn-default pull-right"
-                                    uib-dropdown-toggle>
-                                <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
-                            </button>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5 id="product-price">
+                                R$ {{product.price ? product.price.toFixed(2).toString().replace('.', ',') : "-"}}
+                                </h5>
+                            </div>
+                            <div class="col-md-5">
+                                <h5 id="product-situation">
+                                    <span class="badge badge-warning">{{product.amount ? "Disponível" : "Indisponível"}}</span>
+                                </h5>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="btn-group" uib-dropdown>
+                                    <button id="single-button" type="button" class="btn btn-default pull-right"
+                                            uib-dropdown-toggle>
+                                        <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
+                                    </button>
 
-                            <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu"
-                                aria-labelledby="single-button">
+                                    <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu"
+                                        aria-labelledby="single-button">
 
-                                <li role="menuitem">
-                                    <a ng-click="searchProductCtrl.updateProduct(product)">
-                                        Atualizar
-                                    </a>
-                                </li>
+                                        <li role="menuitem">
+                                            <a ng-click="searchProductCtrl.updateProduct(product)">
+                                                Atualizar
+                                            </a>
+                                        </li>
 
-                                <li role="menuitem"><a ng-click="searchProductCtrl.createLote(product)">Criar
-                                    Lote</a></li>
-                            </ul>
+                                        <li role="menuitem"><a ng-click="searchProductCtrl.createLote(product)">Criar
+                                            Lote</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                     <!-- /.caption -->
                 </div>
