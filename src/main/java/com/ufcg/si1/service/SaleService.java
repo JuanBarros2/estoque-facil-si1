@@ -15,6 +15,6 @@ public interface SaleService {
 	
 	Sale save(Sale sale) throws InvalidAmountException, EntityNotFoundException;
 	
-	void delete(long id);
+	void delete(long id) throws InvalidAmountException, EntityNotFoundException;
 	
 }

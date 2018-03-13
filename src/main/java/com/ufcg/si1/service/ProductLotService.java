@@ -24,4 +24,5 @@ public interface ProductLotService {
      * @return product debited
      */
     Product discountProductStock(Long productId, int amount) throws InvalidAmountException, EntityNotFoundException;
+    Product countProductStock(Long productId, int amount) throws InvalidAmountException, EntityNotFoundException;
 }

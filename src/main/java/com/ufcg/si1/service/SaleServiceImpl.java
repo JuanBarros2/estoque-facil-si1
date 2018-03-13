@@ -41,8 +41,10 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public void delete(long id) {
-
+	public void delete(long id) throws InvalidAmountException, EntityNotFoundException {
+		Sale sale = saleRepository.findOne((int) id);
+		this.countProductStock(sale.getItems());
+		saleRepository.delete(sale);		
 	}
 
 	/**
@@ -52,6 +54,17 @@ public class SaleServiceImpl implements SaleService {
 	private void discountProductStock(List<SaleItem> items) throws InvalidAmountException, EntityNotFoundException {
 		for(SaleItem item: items){
 			Product product = productLotService.discountProductStock(item.getProduct().getId(), item.getAmount());
+			item.setProduct(product);
+			item.setPrice(product.getDiscountPrice());
+		}
+	}
+	/**
+	 * Receives a list of SaleItem and discounts the items from stock.
+	 * @param items
+	 */
+	private void countProductStock(List<SaleItem> items) throws InvalidAmountException, EntityNotFoundException {
+		for(SaleItem item: items){
+			Product product = productLotService.countProductStock(item.getProduct().getId(), item.getAmount());
 			item.setProduct(product);
 			item.setPrice(product.getDiscountPrice());
 		}

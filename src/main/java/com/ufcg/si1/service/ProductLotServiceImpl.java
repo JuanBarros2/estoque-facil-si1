@@ -65,4 +65,20 @@ public class ProductLotServiceImpl implements ProductLotService {
         productLotRepository.save(productLot);
         return productLot.getProduct();
     }
+    
+    @Override
+    public Product countProductStock(Long productId, int amount) throws InvalidAmountException, EntityNotFoundException {
+        ProductLot productLot = getProductLot(productId);
+        Iterator<Lot> iterator = productLot.getLots().iterator();
+        while (iterator.hasNext()){
+            Lot lot = iterator.next();
+            int currentAmount = lot.getItensAmount();
+            int newAmount = currentAmount + amount ;
+            amount += currentAmount;
+            lot.setItensAmount(newAmount);
+        }
+        
+        productLotRepository.save(productLot);
+        return productLot.getProduct();
+    }
 }
