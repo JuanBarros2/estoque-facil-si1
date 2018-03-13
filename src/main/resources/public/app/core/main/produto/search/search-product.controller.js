@@ -5,6 +5,7 @@ app.controller("SearchProductCtrl", ["$uibModal", "$http", "toastr", "ProductSer
 
         self.productsList = [];
         self.produtos = [];
+        self.notifications = [];
 
         const loadProductsList = function () {
             productService.all()
@@ -13,6 +14,16 @@ app.controller("SearchProductCtrl", ["$uibModal", "$http", "toastr", "ProductSer
                 })
                 .catch(() => {
                     toastr.error("Problema ao carregar lista de produtos");
+                });
+        };
+
+        const loadNotificationsList = function () {
+            productService.notifications()
+                .then(response => {
+                self.notifications = response.data
+                })
+                .catch(() => {
+                        toastr.error("Problema ao carregar lista de notificações");
                 });
         };
 
