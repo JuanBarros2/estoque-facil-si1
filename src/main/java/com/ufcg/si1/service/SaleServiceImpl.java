@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.function.Consumer;
 
+import com.ufcg.si1.model.Product;
 import com.ufcg.si1.model.SaleItem;
+import exceptions.EntityNotFoundException;
 import exceptions.InvalidAmountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +34,7 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public Sale save(Sale sale) throws InvalidAmountException {
+	public Sale save(Sale sale) throws InvalidAmountException, EntityNotFoundException {
 		this.discountProductStock(sale.getItems());
 		sale.setSaleDate(new Date());
 		return saleRepository.save(sale);
@@ -47,10 +49,11 @@ public class SaleServiceImpl implements SaleService {
 	 * Receives a list of SaleItem and discounts the items from stock.
 	 * @param items
 	 */
-	private void discountProductStock(List<SaleItem> items) throws InvalidAmountException {
+	private void discountProductStock(List<SaleItem> items) throws InvalidAmountException, EntityNotFoundException {
 		for(SaleItem item: items){
-			double price = productLotService.discountProductStock(item.getProduct().getId(), item.getAmount());
-			item.setPrice(price);
+			Product product = productLotService.discountProductStock(item.getProduct().getId(), item.getAmount());
+			item.setProduct(product);
+			item.setPrice(product.getDiscountPrice());
 		}
 	}
 

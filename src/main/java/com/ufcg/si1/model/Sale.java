@@ -1,19 +1,17 @@
 package com.ufcg.si1.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Sale {
 	@Id
     @GeneratedValue
 	private long id;
-	@OneToMany
+	@OneToMany(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
     private List<SaleItem> items;
 	private Date saleDate;
 

@@ -26,13 +26,18 @@ public class ProductLotServiceImpl implements ProductLotService {
 
     @Override
     public ProductLot addLot(Long productId, Lot lot) throws EntityNotFoundException {
-        ProductLot productLote = productLotRepository.findByProductId(productId);
-        if (productLote == null) {
+        ProductLot productLot = getProductLot(productId);
+
+        productLot.addLot(lot);
+        return productLotRepository.save(productLot);
+    }
+
+    private ProductLot getProductLot(Long productId) throws EntityNotFoundException {
+        ProductLot productLot = productLotRepository.findByProductId(productId);
+        if (productLot == null) {
             throw new EntityNotFoundException("Produto não encontrado");
         }
-
-        productLote.addLot(lot);
-        return productLotRepository.save(productLote);
+        return productLot;
     }
 
     @Override
@@ -42,8 +47,8 @@ public class ProductLotServiceImpl implements ProductLotService {
     }
 
     @Override
-    public double discountProductStock(Long productId, int amount) throws InvalidAmountException{
-        ProductLot productLot = productLotRepository.findByProductId(productId);
+    public Product discountProductStock(Long productId, int amount) throws InvalidAmountException, EntityNotFoundException {
+        ProductLot productLot = getProductLot(productId);
         Iterator<Lot> iterator = productLot.getLots().iterator();
         while (iterator.hasNext() && amount > 0){
             Lot lot = iterator.next();
@@ -58,6 +63,6 @@ public class ProductLotServiceImpl implements ProductLotService {
         }
 
         productLotRepository.save(productLot);
-        return productLot.getProduct().getDiscountPrice();
+        return productLot.getProduct();
     }
 }

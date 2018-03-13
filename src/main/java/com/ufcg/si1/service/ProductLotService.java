@@ -21,7 +21,7 @@ public interface ProductLotService {
      * Receives productId and removes an amount from that product.
      * @param productId id from Product
      * @param amount total of products debited
-     * @return Current price of products debited
+     * @return product debited
      */
-    double discountProductStock(Long productId, int amount) throws InvalidAmountException;
+    Product discountProductStock(Long productId, int amount) throws InvalidAmountException, EntityNotFoundException;
 }

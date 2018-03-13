@@ -1,6 +1,7 @@
 package com.ufcg.si1.controller;
 
 import com.ufcg.si1.service.SaleService;
+import exceptions.EntityNotFoundException;
 import exceptions.InvalidAmountException;
 import exceptions.ObjetoJaExistenteException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import com.ufcg.si1.model.Role.Module.Constants;
 import com.ufcg.si1.model.Sale;
 
 @RestController
-@RequestMapping("/sales")
+@RequestMapping("/venda")
 @CrossOrigin
 public class SaleController {
 	
@@ -28,7 +29,7 @@ public class SaleController {
 
     @PostMapping
     @Secured({Constants.ADM})
-    public Sale add(@RequestBody Sale sale) throws InvalidAmountException {
+    public Sale add(@RequestBody Sale sale) throws InvalidAmountException, EntityNotFoundException {
         return saleService.save(sale);
     }
 
