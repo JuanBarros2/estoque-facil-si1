@@ -11,20 +11,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controllerAs: "logaCtrl"
         })
 
-        .state("produto", {
+        .state("products", {
             url: "/produto",
             templateUrl: "app/core/main/produto/search/search-product.html",
             controller: "SearchProductCtrl",
             controllerAs: "searchProductCtrl"
         })
 
-        .state("categoria", {
+        .state("categories", {
             url: "/categoria",
             templateUrl: "app/core/main/category/search/search-category.html"
         })
 
-        .state("vendas", {
+        .state("sales", {
             url: "/vendas",
-            templateUrl: "app/core/main/sales/search/search-sales.html"
+            templateUrl: "app/core/main/sale/search/search-sale.html"
         })
 });
