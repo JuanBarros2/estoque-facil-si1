@@ -13,7 +13,7 @@ import com.ufcg.si1.model.Role.Module.Constants;
 import com.ufcg.si1.model.Sale;
 
 @RestController
-@RequestMapping("/venda")
+@RequestMapping("/sale")
 @CrossOrigin
 public class SaleController {
 	
