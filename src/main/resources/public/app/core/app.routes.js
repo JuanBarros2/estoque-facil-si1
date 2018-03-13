@@ -20,11 +20,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state("categoria", {
             url: "/categoria",
-            templateUrl: "app/core/main/category/search-category.html"
+            templateUrl: "app/core/main/category/search/search-category.html"
         })
 
         .state("vendas", {
             url: "/vendas",
-            templateUrl: "app/core/main/sales/search-sales.html"
+            templateUrl: "app/core/main/sales/search/search-sales.html"
         })
 });
