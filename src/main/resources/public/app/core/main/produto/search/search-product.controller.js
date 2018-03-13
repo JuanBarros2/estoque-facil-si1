@@ -36,11 +36,11 @@ app.controller("SearchProductCtrl", ["$uibModal", "$http", "toastr", "ProductSer
             const modalInstance = $uibModal.open({
                 ariaLabelledBy: 'Atribuir preço a Produto',
                 ariaDescribedBy: 'Formulario para Atribuir preço a Produto',
-                templateUrl: 'app/core/main/produto/atualiza/atualiza-produto.html',
+                templateUrl: 'app/core/main/produto/update/atualiza-produto.html',
                 controller: 'UpdateProductCtrl',
                 controllerAs: 'updProdCtrl',
                 resolve: {
-                    product: () => productService.get(product.id).then((product) => product)
+                    product: () => productService.get(product.id).then(response => response.data)
                 }
             });
 
