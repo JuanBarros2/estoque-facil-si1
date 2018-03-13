@@ -2,7 +2,6 @@ package com.ufcg.si1.service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.function.Consumer;
 
 import com.ufcg.si1.model.Product;
 import com.ufcg.si1.model.SaleItem;
@@ -36,7 +35,7 @@ public class SaleServiceImpl implements SaleService {
 	@Override
 	public Sale save(Sale sale) throws InvalidAmountException, EntityNotFoundException {
 		this.discountProductStock(sale.getItems());
-		sale.setSaleDate(new Date());
+		sale.setDate(new Date());
 		return saleRepository.save(sale);
 	}
 
