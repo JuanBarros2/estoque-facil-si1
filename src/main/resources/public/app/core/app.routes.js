@@ -17,4 +17,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: "SearchProductCtrl",
             controllerAs: "searchProductCtrl"
         })
+
+        .state("categoria", {
+            url: "/categoria",
+            templateUrl: "app/core/main/categoria/search-category.html"
+        })
 });

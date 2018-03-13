@@ -45,22 +45,22 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3" ng-if="vm.isUserAuthenticated()">
-            <p class="lead">Estoque Facil</p>
             <div class="list-group">
-                <a ui-sref="home" class="list-group-menu list-group-item active" id="products-menu-item">
+                <a ui-sref="produto" class="list-group-menu list-group-item" id="products-menu-item">
                     Produtos
                 </a>
-                <a ng-click="vm.logout()" class="list-group-menu list-group-item" id="logout">
-                    Logout
+                <a ui-sref="categoria" class="list-group-menu list-group-item" id="category-menu-item">
+                    Categorias
                 </a>
                 <a href="#!/sales" class="list-group-menu list-group-item" id="sales-menu-item">
                     Vendas
                 </a>
+                <a ng-click="vm.logout()" class="list-group-menu list-group-item" id="logout">
+                    Logout
+                </a>
             </div>
         </div>
-        <ui-view></ui-view>
-        </div>
-    </div>
+        <ui-view ng-class="{'col-md-9': vm.isUserAuthenticated()}"></ui-view>
 </div>
 <!-- /.container -->
 

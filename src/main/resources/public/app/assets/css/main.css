@@ -83,3 +83,11 @@ ul.c-controls li a i {
 .flex-text {
 	flex-grow: 1;
 }
+
+.main-content {
+    padding: 30px;
+}
+
+.availability {
+    margin-top: 5px;
+}
