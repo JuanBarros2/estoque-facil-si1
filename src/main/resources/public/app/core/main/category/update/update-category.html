@@ -5,7 +5,9 @@
     <div class="modal-body" id="modal-body">
         <div class="form-group">
             <label>Desconto</label>
-            <select class="form-control" ng-options="key as value for (key , value) in updtCategoryCtrl.discounts" ng-model="updtCategoryCtrl.category.discount"></select>
+            <select class="form-control" ng-options="key as value for (key , value) in updtCategoryCtrl.discounts" ng-model="updtCategoryCtrl.category.discount">
+                <option value="">Selecione um desconto</option>
+            </select>
         </div>        
     </div>
     <div class="modal-footer">
