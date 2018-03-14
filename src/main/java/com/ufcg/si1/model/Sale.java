@@ -1,20 +1,25 @@
 package com.ufcg.si1.model;
 
-import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.*;
 
 @Entity
 public class Sale {
 	@Id
     @GeneratedValue
 	private long id;
+
 	@OneToMany(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
     private List<SaleItem> items;
-	private Date saleDate;
 
+	private String date;
 
 	public long getId() {
 		return id;
@@ -32,12 +37,12 @@ public class Sale {
 		this.items = items;
 	}
 
-	public Date getSaleDate() {
-		return saleDate;
+	public String getDate() {
+		return date;
 	}
 
-	public void setSaleDate(Date saleDate) {
-		this.saleDate = saleDate;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public Double getTotalPrice(){

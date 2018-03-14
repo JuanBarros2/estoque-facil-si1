@@ -4,32 +4,24 @@
 	</div>
 	<div class="main-content">
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Filtrar categorias" id="category-list-search">
+			<input type="text" class="form-control" 
+				placeholder="Filtrar categorias" id="category-list-search"
+				ng-model="categoryCtrl.searchText">
 		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Categorias</th>
+					<th>Desconto aplicado</th>
 					<th></th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody ng-repeat="category in categoryCtrl.categories | filter: categoryCtrl.searchText">
 				<tr>
-					<td>Otto</td>
+					<td>{{category.name}}</td>
+					<td>{{categoryCtrl.discounts[category.discount]}}</td>
 					<td style="text-align: right">
-						<a>Aplicar desconto</a>
-					</td>
-				</tr>
-				<tr>
-					<td>Thornton</td>
-					<td style="text-align: right">
-						<a>Aplicar desconto</a>
-					</td>
-				</tr>
-				<tr>
-					<td>the Bird</td>
-					<td style="text-align: right">
-						<a>Aplicar desconto</a>
+						<a ng-click="categoryCtrl.openUpdateCategoryDialog(category)">Mudar desconto</a>
 					</td>
 				</tr>
 			</tbody>

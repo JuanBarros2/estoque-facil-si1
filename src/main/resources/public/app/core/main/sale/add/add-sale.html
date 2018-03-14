@@ -1,0 +1,72 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Adicionar Venda</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <h4 class="text-center">Adicionar Produtos à venda</h4>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in addSaleCtrl.itensOutSale">
+            <td>
+                <p>{{item.product.name}}</p>
+            </td>
+            <td>
+                <input type="number" max="item.maxAmount" min="0" class="form-control" placeholder="Qtd"
+                       ng-model="item.amount" id="item-quant{{item.product.id}}">
+            </td>
+            <td>
+                <a class="glyphicon glyphicon-plus btn"
+                   ng-show="item.amount && item.amount <= item.product.amount"
+                   ng-click="addSaleCtrl.addItem(addSaleCtrl.sale, item)"></a>
+                <a class="glyphicon glyphicon-plus btn"
+                   ng-show="item.amount > item.product.amount"
+                   disabled
+                   title="Quantidade indisponível"
+                   ng-click="addSaleCtrl.addItem(addSaleCtrl.sale, item)"></a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <h4 class="text-center">Produtos na venda atual</h4>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in addSaleCtrl.itensInSale">
+            <td>
+                <p>{{item.product.name}}</p>
+            </td>
+            <td>
+                <input type="number" max="item.maxAmount" min="0" class="form-control" placeholder="Qtd"
+                       ng-model="item.amount" disabled id="item-quants{{item.product.id}}">
+            </td>
+            <td>
+                <a class="glyphicon glyphicon-minus btn" ng-click="addSaleCtrl.removeItem(addSaleCtrl.sale, item)"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h5>
+        Total: R$ {{addSaleCtrl.sale.totalPrice}}
+    </h5>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-disabled="!(addSaleCtrl.sale) || addSaleCtrl.sale.items.length < 1"
+            ng-click="addSaleCtrl.addSale(addSaleCtrl.sale)" id="sdfhf">Adicionar Venda
+    </button>
+    <button class="btn btn-danger" type="button" ng-click="addSaleCtrl.cancel()">Cancelar</button>
+</div>

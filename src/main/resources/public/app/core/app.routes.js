@@ -1,30 +1,34 @@
 app.config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise("nao-encontrado");
+    $urlRouterProvider.otherwise("home");
 
     $stateProvider
 
         .state("home", {
             url: "/",
-            templateUrl: "app/core/main/user/auth/loga.html",
-            controller: 'LogaCtrl',
+            templateUrl: "app/core/main/user/auth/login.html",
+            controller: 'LoginCtrl',
             controllerAs: "logaCtrl"
         })
 
-        .state("produto", {
+        .state("products", {
             url: "/produto",
-            templateUrl: "app/core/main/produto/search/search-product.html",
+            templateUrl: "app/core/main/product/search/search-product.html",
             controller: "SearchProductCtrl",
             controllerAs: "searchProductCtrl"
         })
 
-        .state("categoria", {
+        .state("categories", {
             url: "/categoria",
-            templateUrl: "app/core/main/category/search/search-category.html"
+            templateUrl: "app/core/main/category/search/search-category.html",
+            controller: 'CategoryCtrl',
+            controllerAs: "categoryCtrl"
         })
 
-        .state("vendas", {
+        .state("sales", {
             url: "/vendas",
-            templateUrl: "app/core/main/sales/search/search-sales.html"
+            templateUrl: "app/core/main/sale/search/search-sale.html",
+            controller: "SearchSaleCtrl",
+            controllerAs: "searchSalesCtrl"
         })
 });

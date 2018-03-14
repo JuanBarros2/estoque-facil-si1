@@ -27,12 +27,17 @@ app.factory("ProductService", ["$http", "AppConfig", function ($http, AppConfig)
             });
     }
 
+    function _notifications() {
+        return $http.get(`${AppConfig.baseUrl}/notifications`);
+    }
+
 
     return {
         all: _all,
         update: _update,
         addLot: _addLot,
         create: _create,
-        get: _get
+        get: _get,
+        notifications: _notifications
     };
 }]);
