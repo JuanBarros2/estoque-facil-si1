@@ -1,8 +1,8 @@
-app.controller("CategoryCtrl", ["categories", "$uibModal",
-    function (categories, $uibModal) {
+app.controller("CategoryCtrl", ["$uibModal", "CategoryService",
+    function ($uibModal, CategoryService) {
 
         const self = this;
-        self.categories = categories;
+        self.categories = [];
 
         self.discounts = {
             0: "Sem desconto",
@@ -25,9 +25,22 @@ app.controller("CategoryCtrl", ["categories", "$uibModal",
             });
 
             modalInstance.result.then(result => {
-                category.discount = result.discount;
+                if (result === 201) {
+                    loadCategoriesList();
+                }
             });
         };
+
+        const loadCategoriesList = function () {
+            CategoryService.all()
+                .then(response => {
+                    self.categories = response;
+                })
+                .catch(() => {
+                    toastr.error("Problema ao carregar lista de produtos");
+                });
+        };
         
+        loadCategoriesList();
     }
 ]);

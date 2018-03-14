@@ -22,12 +22,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/categoria",
             templateUrl: "app/core/main/category/search/search-category.html",
             controller: 'CategoryCtrl',
-            controllerAs: "categoryCtrl",
-            resolve: {
-                categories: function (CategoryService) {
-                    return CategoryService.all();
-                }
-            }
+            controllerAs: "categoryCtrl"
         })
 
         .state("sales", {

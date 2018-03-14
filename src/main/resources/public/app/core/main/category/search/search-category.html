@@ -4,7 +4,9 @@
 	</div>
 	<div class="main-content">
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Filtrar categorias" id="category-list-search">
+			<input type="text" class="form-control" 
+				placeholder="Filtrar categorias" id="category-list-search"
+				ng-model="categoryCtrl.searchText">
 		</div>
 		<table class="table table-striped">
 			<thead>
@@ -14,7 +16,7 @@
 					<th></th>
 				</tr>
 			</thead>
-			<tbody ng-repeat="category in categoryCtrl.categories">
+			<tbody ng-repeat="category in categoryCtrl.categories | filter: categoryCtrl.searchText">
 				<tr>
 					<td>{{category.name}}</td>
 					<td>{{categoryCtrl.discounts[category.discount]}}</td>

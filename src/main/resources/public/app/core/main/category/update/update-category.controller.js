@@ -9,11 +9,11 @@ app.controller("UpdateCategoryCtrl", ["CategoryService", "$uibModalInstance", "t
         self.updateCategory = (category) => {
             CategoryService.update(category).then(() => {
                 toastr.success("Categoria atualizada com sucesso!");
-                $uibModalInstance.close(category);
+                $uibModalInstance.close(201);
             })
             .catch(() => {
                 toastr.error("Problema ao atualizar categoria");
-            });;
+            });
         }
 
         self.cancel = function () {
