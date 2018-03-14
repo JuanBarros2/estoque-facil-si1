@@ -15,7 +15,7 @@ app.controller("CreateLotCtrl", ["ProductService", "$uibModalInstance", "toastr"
 
         self.addLot = function (lot) {
             lot = angular.copy(lot);
-            lot.expirationDate = lot.expirationDate.toLocaleDateString(['en-US']);
+            lot.expirationDate = lot.expirationDate.toLocaleDateString(['pt-BR']);
 
             productService.addLot(product.id, JSON.stringify(lot))
                 .then(() => {
