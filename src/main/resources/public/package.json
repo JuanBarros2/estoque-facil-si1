@@ -20,7 +20,8 @@
         "postinstall": "bower install"
     },
     "dependencies": {
-        "bower": "^1.7.9"
+        "bower": "^1.7.9",
+        "express": "^4.16.2"
     },
     "devDependencies": {
         "bower": "^1.7.9",
