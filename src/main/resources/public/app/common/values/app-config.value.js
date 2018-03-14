@@ -1,3 +1,3 @@
 app.value("AppConfig", {
-    baseUrl : "http://localhost:8080"
+    baseUrl : "https://estoque-facil-si1.herokuapp.com/"
 });

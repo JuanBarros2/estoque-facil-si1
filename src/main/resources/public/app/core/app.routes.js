@@ -1,6 +1,6 @@
 app.config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise("nao-encontrado");
+    $urlRouterProvider.otherwise("home");
 
     $stateProvider
 

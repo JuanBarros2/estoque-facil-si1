@@ -22,6 +22,8 @@ app.controller("SearchSaleCtrl", ["toastr", "$uibModal", "SaleService",
                 if (result === 201) {
                     toastr.show("Venda adicionada");
                     _loadSales();
+                } else if (result === 500) {
+                    toastr.error("Erro ao concluir venda");
                 }
             });
         };
