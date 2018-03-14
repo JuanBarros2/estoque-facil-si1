@@ -1,6 +1,14 @@
-app.controller("SearchSaleCtrl", ["toastr", "$uibModal",
-    function (toastr, $uibModal) {
+app.controller("SearchSaleCtrl", ["toastr", "$uibModal", "SaleService",
+    function (toastr, $uibModal, salesService) {
         const self = this;
+
+        const _loadSales = () => {
+            salesService.all().then(response => {
+                self.sales = response.data;
+            })
+        };
+
+        _loadSales();
 
         self.addSale = () => {
             const modalInstance = $uibModal.open({
@@ -12,9 +20,14 @@ app.controller("SearchSaleCtrl", ["toastr", "$uibModal",
             modalInstance.result.then(function (result) {
                 console.log(result);
                 if (result === 201) {
-                    //todo load sales
                     toastr.show("Venda adicionada");
+                    _loadSales();
                 }
             });
+        };
+
+        self.orderBy = (orderingCriteria) => {
+            self.salesOrderCriteria = orderingCriteria;
+            self.orderDirection = !self.orderDirection;
         }
     }]);
