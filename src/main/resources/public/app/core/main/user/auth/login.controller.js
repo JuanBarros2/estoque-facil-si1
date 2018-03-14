@@ -5,7 +5,7 @@ app.controller('LoginCtrl', ['$state', 'toastr', 'AuthApiService', function($sta
 
     self.loga = (credencials) => {
         authService.loga(credencials).then(() => {
-            $state.go('product');
+            $state.go('products');
         }).catch((error) => {
             toastr.error(error);
         });
