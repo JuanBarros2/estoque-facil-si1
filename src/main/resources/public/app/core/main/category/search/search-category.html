@@ -10,26 +10,16 @@
 			<thead>
 				<tr>
 					<th>Categorias</th>
+					<th>Desconto aplicado</th>
 					<th></th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody ng-repeat="category in categoryCtrl.categories">
 				<tr>
-					<td>Otto</td>
+					<td>{{category.name}}</td>
+					<td>{{categoryCtrl.discounts[category.discount]}}</td>
 					<td style="text-align: right">
-						<a>Aplicar desconto</a>
-					</td>
-				</tr>
-				<tr>
-					<td>Thornton</td>
-					<td style="text-align: right">
-						<a>Aplicar desconto</a>
-					</td>
-				</tr>
-				<tr>
-					<td>the Bird</td>
-					<td style="text-align: right">
-						<a>Aplicar desconto</a>
+						<a ng-click="categoryCtrl.openUpdateCategoryDialog(category)">Mudar desconto</a>
 					</td>
 				</tr>
 			</tbody>

@@ -1,0 +1,17 @@
+<form name="createLoteForm" ng-submit="updtCategoryCtrl.updateCategory(updtCategoryCtrl.category)">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Aplicar descontos a: </h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            <label>Desconto</label>
+            <select class="form-control" ng-options="key as value for (key , value) in updtCategoryCtrl.discounts" ng-model="updtCategoryCtrl.category.discount"></select>
+        </div>        
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" ng-disabled="createLoteForm.$invalid">
+            Salvar
+        </button>
+        <button class="btn btn-danger" type="button" ng-click="updtCategoryCtrl.cancel()" href="">Cancelar</button>
+    </div>
+</form>
