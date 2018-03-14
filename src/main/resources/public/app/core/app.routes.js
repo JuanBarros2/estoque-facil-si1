@@ -6,14 +6,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state("home", {
             url: "/",
-            templateUrl: "app/core/main/user/auth/loga.html",
-            controller: 'LogaCtrl',
+            templateUrl: "app/core/main/user/auth/login.html",
+            controller: 'LoginCtrl',
             controllerAs: "logaCtrl"
         })
 
         .state("products", {
             url: "/produto",
-            templateUrl: "app/core/main/produto/search/search-product.html",
+            templateUrl: "app/core/main/product/search/search-product.html",
             controller: "SearchProductCtrl",
             controllerAs: "searchProductCtrl"
         })
@@ -25,6 +25,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state("sales", {
             url: "/vendas",
-            templateUrl: "app/core/main/sale/search/search-sale.html"
+            templateUrl: "app/core/main/sale/search/search-sale.html",
+            controller: "SearchSaleCtrl",
+            controllerAs: "searchSalesCtrl"
         })
 });
