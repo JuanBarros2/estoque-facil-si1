@@ -39,21 +39,6 @@ public class EstoqueFacilRestApi {
         };
     }
 
-
-    @Bean
-    CommandLineRunner init(UserRepository usuarioRepository,
-                           BCryptPasswordEncoder crypt) {
-        return (evt) -> {
-            User user = new User();
-            user.setEmail("admin@admin.com");
-            user.setPassword(crypt.encode("admin"));
-            Role role = new Role();
-            role.setNome(ADM);
-            user.setRoles(Arrays.asList(role));
-            usuarioRepository.save(user);
-        };
-    }
-
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
