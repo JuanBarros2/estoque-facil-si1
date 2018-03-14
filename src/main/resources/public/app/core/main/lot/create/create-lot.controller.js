@@ -7,18 +7,15 @@ app.controller("CreateLotCtrl", ["ProductService", "$uibModalInstance", "toastr"
             open: false,
             dateOptions: {
                 formatYear: 'yy',
+                minDate: new Date(),
                 startingDay: 1
             },
-            minDate: new Date(),
             dateformat: 'dd/MM/yyyy'
         };
 
         self.addLot = function (lot) {
             lot = angular.copy(lot);
-
-            lot.expirationDate = lot.expirationDate.getDay() + "/" +
-                (lot.expirationDate.getMonth() + 1) + "/" +
-                lot.expirationDate.getFullYear();
+            lot.expirationDate = lot.expirationDate.toLocaleDateString(['en-US']);
 
             productService.addLot(product.id, JSON.stringify(lot))
                 .then(() => {
