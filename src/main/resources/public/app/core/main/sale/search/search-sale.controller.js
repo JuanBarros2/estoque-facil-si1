@@ -1,21 +1,20 @@
-app.controller("SearchSaleCtrl", ["$uibModalInstance", "$http", "toastr", "ProductService",
-    function ($uibModalInstance, $http, toastr, produtoService) {
+app.controller("SearchSaleCtrl", ["toastr", "$uibModal",
+    function (toastr, $uibModal) {
         const self = this;
 
-        self.createProduct = function (product) {
-            product.category.name = product.category.name.toLowerCase();
+        self.addSale = () => {
+            const modalInstance = $uibModal.open({
+                templateUrl: 'app/core/main/sale/add/add-sale.html',
+                controller: 'AddSaleCtrl',
+                controllerAs: 'addSaleCtrl'
+            });
 
-            produtoService.create(JSON.stringify(product))
-                .then(() => {
-                    toastr.success("Produto adicionado com sucesso!");
-                    $uibModalInstance.close(201);
-                })
-                .catch(() => {
-                    toastr.error("Produto já cadastrado");
-                });
-        };
-
-        self.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
+            modalInstance.result.then(function (result) {
+                console.log(result);
+                if (result === 201) {
+                    //todo load sales
+                    toastr.show("Venda adicionada");
+                }
+            });
+        }
     }]);

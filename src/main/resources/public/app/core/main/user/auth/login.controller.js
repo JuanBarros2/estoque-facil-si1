@@ -3,8 +3,8 @@ app.controller('LoginCtrl', ['$state', 'toastr', 'AuthApiService', function($sta
 
     self.errorMessage = {mustShow: false};
 
-    self.loga = (credenciais) => {
-        authService.loga(credenciais).then(() => {
+    self.loga = (credencials) => {
+        authService.loga(credencials).then(() => {
             $state.go('product');
         }).catch((error) => {
             toastr.error(error);

@@ -1,5 +1,6 @@
 package com.ufcg.si1.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class SaleServiceImpl implements SaleService {
 	@Override
 	public Sale save(Sale sale) throws InvalidAmountException, EntityNotFoundException {
 		this.discountProductStock(sale.getItems());
-		sale.setDate(new Date());
+		sale.setDate(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
 		return saleRepository.save(sale);
 	}
 
