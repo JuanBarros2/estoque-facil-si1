@@ -1,22 +1,20 @@
 <div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Criar lot do product: {{product.name}}</h3>
+    <h3 class="modal-title" id="modal-title">Criar lote do produto: {{product.name}}</h3>
 </div>
 <div class="modal-body" id="modal-body">
     <form name="createLoteForm">
         <div class="form-group">
             <label>Quantidade de itens:</label>
-            <input type="number" step="1" min="0" class="form-control" required ng-model="lot.itensAmount"/>
+            <input type="number" step="1" min="0" class="form-control" required ng-model="createLotCtrl.lot.itensAmount"/>
         </div>
         <div class="form-group">
             <label>Data de validade</label>
             <div class="input-group">
                 <p class="input-group">
                     <input type="date" class="form-control" uib-datepicker-popup
-                           ng-model="lot.expirationDate"
+                           ng-model="createLotCtrl.lot.expirationDate"
                            is-open="createLotCtrl.datePicker.open"
-                           min-date="createLotCtrl.datePicker.minDate"
                            datepicker-options="createLotCtrl.datePicker.dateOptions"
-                           ng-required="true"
                            close-text="Fechar"/>
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default"
@@ -31,7 +29,7 @@
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-disabled="createLoteForm.$invalid"
-            ng-click="createLotCtrl.addLot(lot)">
+            ng-click="createLotCtrl.addLot(createLotCtrl.lot)">
         Salvar
     </button>
     <button class="btn btn-danger" type="button" ng-click="createLotCtrl.cancel()">Cancelar</button>
