@@ -1,0 +1,26 @@
+{
+    "name": "projeto-estoque-facil-frontend",
+    "version": "0.0.1",
+    "description": "Projeto em AngularJS para a disciplina de SI1 - 2017.2",
+    "keywords": [
+        "AngularJS",
+        "angular"
+    ],
+    "license": "MIT",
+    "authors": [
+        "Pablo Victor",
+        "Rhuan Reis"
+    ],
+    "dependencies": {
+        "express": "^4.16.2"
+    },
+    "main": "",
+    "scripts": {
+        "postinstall": "cd ./src/main/resources/public && npm install"
+    },
+    "engines": {
+        "node": "^7.3.0",
+        "npm": "^5.5.1"
+    },
+    "private": false
+}
