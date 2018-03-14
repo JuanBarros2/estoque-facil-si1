@@ -21,10 +21,6 @@ public class Sale {
 
 	private String date;
 
-	public Sale(){
-		this.date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
-	}
-
 	public long getId() {
 		return id;
 	}

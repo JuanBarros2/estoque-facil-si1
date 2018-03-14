@@ -3,7 +3,7 @@
         <span class="title">Vendas</span>
         <ul class="pull-right c-controls">
             <li>
-                <button class="btn btn-success">
+                <button class="btn btn-success" ng-click="searchSalesCtrl.addSale()">
                     Adicionar Venda
                 </button>
             </li>
@@ -18,11 +18,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="sale in salesCtrl.sales">
+            <tr ng-repeat="sale in searchSalesCtrl.sales">
                 <td>sale.id</td>
                 <td>sale.date</td>
                 <td style="text-align: right">
-                    <a ng-click="cancelSale(sale)">Cancelar venda</a>
+                    <a ng-click="searchSalesCtrl.cancelSale(sale)">Cancelar venda</a>
                 </td>
             </tr>
             </tbody>

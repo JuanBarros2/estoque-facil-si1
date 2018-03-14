@@ -61,15 +61,16 @@
             </div>
         </div>
         <ui-view ng-class="{'col-md-9': vm.isUserAuthenticated()}"></ui-view>
-</div>
-<!-- /.container -->
+    </div>
+    <!-- /.container -->
 
-<div class="container">
-    <hr>
-    <!-- Footer -->
-    <div class="container col-md-4 col-md-offset-4">
-        </br>
-        <p class="text-muted text-center">&copy; 2018 Estoque Facil</p>
+    <div class="container">
+        <hr>
+        <!-- Footer -->
+        <div class="container col-md-4 col-md-offset-4">
+            </br>
+            <p class="text-muted text-center">&copy; 2018 Estoque Facil</p>
+        </div>
     </div>
 </div>
 <!-- /.container -->
@@ -101,14 +102,20 @@
 <script src="app/core/services/auth-api.service.js"></script>
 <script src="app/core/services/auth-token.service.js"></script>
 <script src="app/core/services/category.service.js"></script>
+<script src="app/core/services/sale.service.js"></script>
 
 <script src="app/core/app.controller.js"></script>
 
-<script src="app/core/main/produto/create/create-product.controller.js"></script>
-<script src="app/core/main/produto/update/atualiza-produto.controller.js"></script>
-<script src="app/core/main/produto/search/search-product.controller.js"></script>
+<script src="app/core/main/product/create/create-product.controller.js"></script>
+<script src="app/core/main/product/update/update-product.controller.js"></script>
+<script src="app/core/main/product/search/search-product.controller.js"></script>
+<script src="app/core/main/product/search/search-product.controller.js"></script>
 
-<script src="app/core/main/user/auth/loga.controller.js"></script>
+
+<script src="app/core/main/sale/search/search-sale.controller.js"></script>
+<script src="app/core/main/sale/add/add-sale.controller.js"></script>
+
+<script src="app/core/main/user/auth/login.controller.js"></script>
 
 <script src="app/core/main/lot/create/create-lot.controller.js"></script>
 <script src="app/core/main/category/search/category.controller.js"></script>

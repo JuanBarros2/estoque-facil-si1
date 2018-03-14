@@ -1,5 +1,5 @@
-app.controller("CreateProductCtrl", ["$uibModalInstance", "$http", "toastr", "ProductService",
-    function ($uibModalInstance, $http, toastr, produtoService) {
+app.controller("CreateProductCtrl", ["$uibModalInstance", "toastr", "ProductService",
+    function ($uibModalInstance, toastr, produtoService) {
         const self = this;
 
         self.createProduct = function (product) {
