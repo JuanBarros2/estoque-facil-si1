@@ -82,5 +82,6 @@ app.controller("SearchProductCtrl", ["$uibModal", "$http", "toastr", "ProductSer
         };
 
         loadProductsList();
+        loadNotificationsList();
     }
 ]);

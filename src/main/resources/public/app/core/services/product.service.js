@@ -28,7 +28,7 @@ app.factory("ProductService", ["$http", "AppConfig", function ($http, AppConfig)
     }
 
     function _notifications() {
-        return $http.get(`${baseServiceUrl}/notifications`);
+        return $http.get(`${AppConfig.baseUrl}/notifications`);
     }
 
 

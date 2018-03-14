@@ -39,6 +39,7 @@ public class EstoqueFacilRestApi {
         };
     }
 
+
     @Bean
     CommandLineRunner init(UserRepository usuarioRepository,
                            BCryptPasswordEncoder crypt) {

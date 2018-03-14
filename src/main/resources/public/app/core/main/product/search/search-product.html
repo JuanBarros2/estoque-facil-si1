@@ -11,7 +11,7 @@
         <uib-accordion ng-show="notifications.length > 0">
             <div uib-accordion-group heading="Notificações">
                 <h5 id="product-notifications" ng-repeat="note in notifications">
-                    Ao menos um lote de {{note.product}} está {{note.status ? "a, no máximo, um mês do vencimento" : "com, no máximo, 15 unidades"}}
+                    {{note.message}}
                     <br>
                 </h5>
             </div>
