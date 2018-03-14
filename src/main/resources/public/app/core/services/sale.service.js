@@ -6,4 +6,8 @@ app.service('SaleService', ["$http", "AppConfig", function($http, AppConfig) {
     self.add = (sale) => {
         return $http.post(baseUrl, sale);
     };
+
+    self.all = () => {
+        return $http.get(baseUrl);
+    }
 }]);

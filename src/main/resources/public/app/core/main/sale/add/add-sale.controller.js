@@ -46,7 +46,7 @@ app.controller("AddSaleCtrl", ["toastr", "$uibModalInstance", "ProductService", 
 
         self.addSale = (sale) => {
             saleService.add(sale).then(() => {
-                $uibModalInstance.dismiss(201);
+                $uibModalInstance.close(201);
             });
         };
 

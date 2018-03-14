@@ -9,20 +9,42 @@
             </li>
         </ul>
     </div>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Pesquisar venda por id"
+               ng-model="saleId" id="sale-list-search">
+    </div>
     <div class="main-content">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Categorias</th>
-                <th></th>
+                <th>
+                    <a ng-click="searchSalesCtrl.orderBy('id')">
+                        Id
+                    </a>
+                </th>
+                <th>
+                    <a ng-click="searchSalesCtrl.orderBy('date')">
+                    Data
+                    </a>
+                </th>
+                <th>
+                    <a ng-click="searchSalesCtrl.orderBy('totalPrice')">
+                        Total
+                    </a>
+                </th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="sale in searchSalesCtrl.sales">
-                <td>sale.id</td>
-                <td>sale.date</td>
+            <tr ng-repeat="sale in searchSalesCtrl.sales |
+                                      filter:{id:saleId} |
+                                      orderBy: searchSalesCtrl.salesOrderCriteria:searchSalesCtrl.orderDirection">
+                <td>{{sale.id}}</td>
+                <td>{{sale.date}}</td>
+                <td>{{sale.totalPrice.toFixed(2).replace('.', ',')}}</td>
                 <td style="text-align: right">
-                    <a ng-click="searchSalesCtrl.cancelSale(sale)">Cancelar venda</a>
+                    <button class="btn btn-primary" ng-click="searchSalesCtrl.cancelSale(sale)">
+                        Cancelar
+                    </button>
                 </td>
             </tr>
             </tbody>
